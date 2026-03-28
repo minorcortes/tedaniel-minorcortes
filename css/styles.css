@@ -1,7 +1,49 @@
 /* ==========================================================================
-   Te Daniel — Baby Shower Landing Page
+   Té Daniel — Baby Shower Landing Page
    Mobile-first, single-page layout
+   Watercolor Nursery Aesthetic
    ========================================================================== */
+
+/* ---- Design Tokens ---- */
+:root {
+  /* Tipografía */
+  --font-display: 'Cormorant Infant', serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-body: 'Quicksand', sans-serif;
+
+  /* Escala Tipográfica (mobile-first) */
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-hero: 3rem;
+
+  /* Paleta Oficial (Watercolor Nursery) */
+  --color-bg: #F4F4F4;
+  --color-surface: #FCFBF9;
+  --color-text-dark: #5F4331;
+  --color-text: #7B593F;
+
+  --color-camel: #D8B38A;
+  --color-sand: #E9D4BC;
+  --color-taupe: #C8BEB4;
+
+  --color-dusty-blue: #C9D8DE;
+  --color-soft-sage: #B8C19A;
+  --color-butter-yellow: #F4E3A6;
+
+  /* Espaciado */
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-section: 4rem 0;
+
+  /* Bordes y Sombras */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --shadow-card: 0 4px 12px rgba(95, 67, 49, 0.05);
+}
 
 /* ---- Reset ---- */
 *, *::before, *::after {
@@ -12,20 +54,56 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+
+/* ---- Tipografía Global ---- */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--color-text-dark);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.font-display { font-family: var(--font-display); }
+.font-script  { font-family: var(--font-script);  }
+
+/* ---- Layout Utilities ---- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---- Secciones Base ---- */
+.section-hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+}
+
+.section-surface { padding: var(--space-section); background-color: var(--color-surface); }
+.section-default { padding: var(--space-section); background-color: var(--color-bg); }
+.section-accent  { padding: var(--space-section); background-color: var(--color-sand); }
+.section-footer  { padding: var(--space-section); background-color: var(--color-surface); text-align: center; }
 
 /* ---- Sticky Header ---- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(252, 251, 249, 0.95);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -42,7 +120,8 @@ body {
 .nav-brand {
   text-decoration: none;
   font-weight: 700;
-  color: inherit;
+  color: var(--color-text-dark);
+  font-size: var(--text-xl);
 }
 
 .nav-links {
@@ -53,7 +132,33 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: inherit;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--color-text-dark);
+}
+
+/* ---- CTA Button (Nav) ---- */
+.nav-btn-cta {
+  background-color: var(--color-dusty-blue);
+  color: var(--color-text-dark);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+/* ---- Mobile Menu Button ---- */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-text-dark);
+  cursor: pointer;
 }
 
 /* ---- Back to Top Button ---- */
@@ -65,8 +170,8 @@ body {
   height: 3rem;
   border: none;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
+  background: var(--color-camel);
+  color: var(--color-surface);
   font-size: 1.25rem;
   cursor: pointer;
   opacity: 0;

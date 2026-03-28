@@ -1,0 +1,5 @@
+# robots.txt — tedaniel.minorcortes.com
+# Este sitio es estrictamente privado. No indexar.
+
+User-agent: *
+Disallow: /

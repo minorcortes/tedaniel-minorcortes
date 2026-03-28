@@ -8,6 +8,13 @@ Single-page interactive baby shower landing page
 
 ## Permanent Requirements
 
+### Privacy & Discoverability (CRITICAL)
+- This landing page is strictly personal — only accessible via direct link.
+- Must include `<meta name="robots" content="noindex, nofollow, noarchive, noimageindex, nosnippet">`.
+- Must include a strict `robots.txt` blocking all crawlers (`Disallow: /`).
+- Do NOT add SEO metadata designed for ranking or discovery (no meta description, no Open Graph, no schema.org).
+- This page must NEVER appear in Google or any other search engine index.
+
 ### Architecture
 - Single landing page only — NO multi-page architecture
 - Internal anchor navigation (section scrolling)
@@ -45,6 +52,7 @@ Single-page interactive baby shower landing page
 ## File Structure
 ```
 tedaniel.minorcortes.com/
+├── robots.txt              ← blocks all crawlers
 ├── index.html
 ├── css/styles.css
 ├── js/main.js

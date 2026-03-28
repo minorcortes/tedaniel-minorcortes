@@ -3,25 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Baby Shower de Daniel — Celebra con nosotros este momento especial.">
-  <title>Baby Shower — Te Daniel</title>
+
+  <!-- PRIVACIDAD: Bloqueo total de indexación, rastreo, imágenes y snippets -->
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, noimageindex, nosnippet">
+
+  <title>Té Daniel</title>
+
+  <!-- Google Fonts: Cormorant Infant (títulos), Great Vibes (acento), Quicksand (cuerpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@400;600;700&family=Great+Vibes&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
   <!-- Sticky Navigation -->
   <header id="header" class="site-header">
-    <nav class="site-nav">
-      <a href="#top" class="nav-brand">Te Daniel</a>
+    <nav class="site-nav" aria-label="Navegación principal">
+      <a href="#hero" class="nav-brand font-display">Té Daniel</a>
+
+      <!-- Botón hamburguesa preparado para menú móvil -->
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <span aria-hidden="true">☰</span>
+      </button>
+
       <ul class="nav-links">
-        <!-- Navigation links will be added as sections are designed -->
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#evento">Evento</a></li>
+        <li><a href="#confirmar" class="nav-btn-cta">Confirmar</a></li>
+        <li><a href="#regalos">Regalos</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Main Content -->
-  <main id="top">
-    <!-- Sections will be added here -->
+  <main>
+    <section id="hero" class="section-hero">
+      <div class="container">
+        <h1 class="font-script">Té Daniel</h1>
+        <p class="font-display">Baby Shower</p>
+      </div>
+    </section>
+
+    <section id="nosotros" class="section-surface">
+      <div class="container">
+        <h2 class="font-display">Nosotros</h2>
+      </div>
+    </section>
+
+    <section id="daniel" class="section-default">
+      <div class="container">
+        <h2 class="font-display">Sobre Daniel</h2>
+      </div>
+    </section>
+
+    <section id="evento" class="section-accent">
+      <div class="container">
+        <h2 class="font-display">El Evento</h2>
+      </div>
+    </section>
+
+    <section id="confirmar" class="section-surface">
+      <div class="container">
+        <h2 class="font-display">Confirmar Asistencia</h2>
+      </div>
+    </section>
+
+    <section id="regalos" class="section-default">
+      <div class="container">
+        <h2 class="font-display">Regalos y Contribuciones</h2>
+      </div>
+    </section>
+
+    <section id="cierre" class="section-footer">
+      <div class="container">
+        <h2 class="font-script">Con amor,</h2>
+        <!-- Texto neutral, fácil de reemplazar luego -->
+        <p class="font-display">Cindy y Minor</p>
+      </div>
+    </section>
   </main>
 
   <!-- Back to Top Button -->
