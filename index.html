@@ -24,12 +24,16 @@
     <nav class="site-nav" aria-label="Navegación principal">
       <a href="#hero" class="nav-brand font-display">Té Daniel</a>
 
-      <!-- Botón hamburguesa preparado para menú móvil -->
-      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Abrir menú de navegación" aria-expanded="false">
-        <span aria-hidden="true">☰</span>
+      <!-- Botón hamburguesa para menú móvil -->
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+        <span class="hamburger-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
       </button>
 
-      <ul class="nav-links">
+      <ul id="nav-links" class="nav-links">
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#evento">Evento</a></li>
         <li><a href="#confirmar" class="nav-btn-cta">Confirmar</a></li>
