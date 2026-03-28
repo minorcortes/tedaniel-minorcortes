@@ -88,9 +88,37 @@
     </section>
 
     <section id="nosotros" class="section-surface">
-      <div class="container">
-        <h2 class="font-display">Nosotros</h2>
+      <div class="container nosotros-layout">
+
+        <!-- Foto de los padres -->
+        <div class="nosotros-photo">
+          <div class="photo-frame">
+            <!-- Slot: foto real de Cindy y Minor (reemplazar con <img>) -->
+            <div class="photo-placeholder" role="img" aria-label="Foto de Cindy y Minor">
+              <span class="font-display">Cindy & Minor</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mensaje de bienvenida -->
+        <div class="nosotros-text">
+          <h2 class="nosotros-title font-display">Nosotros</h2>
+          <div class="section-divider" aria-hidden="true"></div>
+          <p class="nosotros-message">
+            Con mucha alegría y emoción, los invitamos a celebrar
+            la próxima llegada de nuestro pequeño <strong>Daniel</strong>.
+          </p>
+          <p class="nosotros-message">
+            Este momento tan especial es aún más significativo
+            cuando lo compartimos con las personas que más queremos.
+          </p>
+        </div>
+
       </div>
+
+      <!-- Slot: motivo decorativo futuro (globo pastel, 512×512 @2x) -->
+      <div class="section-decor section-decor--nosotros" aria-hidden="true"></div>
+
       <!-- Estrellas decorativas -->
       <svg class="star star--sm" style="top:20%;right:6%" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
       <svg class="star star--xs" style="bottom:15%;left:5%" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
