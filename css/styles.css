@@ -139,6 +139,42 @@ h1, h2, h3 {
   mix-blend-mode: multiply;
 }
 
+/* ==========================================================================
+   SISTEMA DE FONDO INTERACTIVO — Capa 2: Estrellas SVG
+   Posiciones semi-curadas por sección, parpadeo CSS puro
+   ========================================================================== */
+
+.star {
+  position: absolute;
+  color: var(--color-butter-yellow);
+  pointer-events: none;
+  animation: twinkle var(--twinkle-duration, 4s) ease-in-out infinite;
+  animation-delay: var(--twinkle-delay, 0s);
+}
+
+/* Tamaños */
+.star--xs { width: 10px; height: 10px; --twinkle-duration: 3s; }
+.star--sm { width: 14px; height: 14px; --twinkle-duration: 4.5s; }
+.star--md { width: 20px; height: 20px; --twinkle-duration: 5.5s; }
+
+/* Delays escalonados por nth-of-type para variar por sección */
+.star:nth-of-type(1) { --twinkle-delay: 0s; }
+.star:nth-of-type(2) { --twinkle-delay: 1.8s; }
+.star:nth-of-type(3) { --twinkle-delay: 0.9s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50%      { opacity: 0.7; }
+}
+
+/* Accesibilidad: desactivar parpadeo si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  .star {
+    animation: none;
+    opacity: 0.35;
+  }
+}
+
 /* ---- Secciones Base ---- */
 .section-hero {
   min-height: 100svh;
@@ -330,10 +366,10 @@ h1, h2, h3 {
   }
 }
 
-.section-surface { padding: var(--space-section); background-color: var(--color-surface); }
-.section-default { padding: var(--space-section); background-color: var(--color-bg); }
-.section-accent  { padding: var(--space-section); background-color: var(--color-sand); }
-.section-footer  { padding: var(--space-section); background-color: var(--color-surface); text-align: center; }
+.section-surface { padding: var(--space-section); background-color: var(--color-surface); position: relative; overflow: hidden; }
+.section-default { padding: var(--space-section); background-color: var(--color-bg); position: relative; overflow: hidden; }
+.section-accent  { padding: var(--space-section); background-color: var(--color-sand); position: relative; overflow: hidden; }
+.section-footer  { padding: var(--space-section); background-color: var(--color-surface); text-align: center; position: relative; overflow: hidden; }
 
 /* ---- Sticky Header ---- */
 .site-header {
