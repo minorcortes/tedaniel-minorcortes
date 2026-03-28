@@ -91,6 +91,188 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
   background-color: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  flex-direction: column;
+  isolation: isolate;
+}
+
+/* ---- Hero: Capa de fondo ---- */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--color-bg);
+  /* Futuro: background-image: url(...); background-size: cover; */
+}
+
+/* ---- Hero: Zonas decorativas ---- */
+.hero-decor {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-asset {
+  position: absolute;
+  opacity: 0.65;
+}
+
+/* Caballo balancín — inferior izquierda */
+.hero-asset--left {
+  bottom: 8%;
+  left: -2%;
+  width: 128px;
+  height: 128px;
+}
+
+/* Osito — inferior derecha */
+.hero-asset--right {
+  bottom: 8%;
+  right: -2%;
+  width: 128px;
+  height: 128px;
+}
+
+/* Estrellas/nubes — superior izquierda */
+.hero-asset--top-left {
+  top: 12%;
+  left: 5%;
+  width: 96px;
+  height: 96px;
+}
+
+/* Móvil de cuna — superior derecha */
+.hero-asset--top-right {
+  top: 8%;
+  right: 5%;
+  width: 96px;
+  height: 96px;
+}
+
+/* ---- Hero: Contenido ---- */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1.5rem;
+}
+
+.hero-eyebrow {
+  font-size: var(--text-lg);
+  color: var(--color-camel);
+  letter-spacing: 0.1em;
+  font-weight: 400;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 10vw, 6rem);
+  color: var(--color-text-dark);
+  line-height: 1.1;
+  margin: 0.25rem 0;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-camel),
+    transparent
+  );
+  margin: 0.75rem 0;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  color: var(--color-text);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* ---- Hero: Scroll Cue ---- */
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.scroll-arrow {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--color-taupe);
+  animation: bounce-down 2s ease-in-out infinite;
+}
+
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
+
+/* ---- Hero: Responsivo ---- */
+@media (min-width: 768px) {
+  .hero-asset--left {
+    width: 192px;
+    height: 192px;
+    bottom: 10%;
+    left: 2%;
+  }
+  .hero-asset--right {
+    width: 192px;
+    height: 192px;
+    bottom: 10%;
+    right: 2%;
+  }
+  .hero-asset--top-left {
+    width: 128px;
+    height: 128px;
+  }
+  .hero-asset--top-right {
+    width: 128px;
+    height: 128px;
+  }
+  .hero-divider {
+    width: 80px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-asset--left {
+    width: 256px;
+    height: 256px;
+    bottom: 5%;
+    left: 5%;
+  }
+  .hero-asset--right {
+    width: 256px;
+    height: 256px;
+    bottom: 5%;
+    right: 5%;
+  }
+  .hero-asset--top-left {
+    width: 192px;
+    height: 192px;
+    top: 10%;
+    left: 8%;
+  }
+  .hero-asset--top-right {
+    width: 192px;
+    height: 192px;
+    top: 6%;
+    right: 8%;
+  }
+  .hero-divider {
+    width: 100px;
+  }
 }
 
 .section-surface { padding: var(--space-section); background-color: var(--color-surface); }
