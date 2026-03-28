@@ -84,6 +84,61 @@ h1, h2, h3 {
   padding: 0 1.5rem;
 }
 
+/* ==========================================================================
+   SISTEMA DE FONDO INTERACTIVO — Capa 0: Textura Base
+   Gradientes radiales que simulan manchas de acuarela en papel
+   ========================================================================== */
+
+.bg-texture {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  background-color: var(--color-bg);
+  background-image:
+    /* Mancha cálida superior izquierda */
+    radial-gradient(
+      ellipse 600px 500px at 15% 10%,
+      rgba(232, 212, 188, 0.25),
+      transparent 70%
+    ),
+    /* Mancha azul polvo centro-derecha */
+    radial-gradient(
+      ellipse 500px 400px at 80% 35%,
+      rgba(201, 216, 222, 0.18),
+      transparent 65%
+    ),
+    /* Mancha salvia inferior izquierda */
+    radial-gradient(
+      ellipse 450px 350px at 20% 70%,
+      rgba(184, 193, 154, 0.12),
+      transparent 60%
+    ),
+    /* Mancha mantequilla inferior derecha */
+    radial-gradient(
+      ellipse 400px 300px at 75% 85%,
+      rgba(244, 227, 166, 0.15),
+      transparent 65%
+    ),
+    /* Mancha arena central suave */
+    radial-gradient(
+      ellipse 700px 500px at 50% 50%,
+      rgba(233, 212, 188, 0.10),
+      transparent 70%
+    );
+}
+
+/* Textura de papel superpuesta (futuro: imagen real) */
+.bg-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Futuro: background-image: url('assets/images/paper-texture.webp'); */
+  /* background-size: 300px; background-repeat: repeat; */
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+}
+
 /* ---- Secciones Base ---- */
 .section-hero {
   min-height: 100svh;
