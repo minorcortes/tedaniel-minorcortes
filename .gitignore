@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Deployment
+deploy.sh
+.ftp-credentials
+
+# Build artifacts
+node_modules/
