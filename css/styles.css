@@ -162,6 +162,30 @@ h1, h2, h3 {
 .star:nth-of-type(2) { --twinkle-delay: 1.8s; }
 .star:nth-of-type(3) { --twinkle-delay: 0.9s; }
 
+/* ---- Posiciones semi-curadas por sección ---- */
+/* Hero */
+.star--hero-1 { top: 15%; left: 8%; }
+.star--hero-2 { top: 22%; right: 10%; }
+/* Nosotros */
+.star--nos-1  { top: 20%; right: 6%; }
+.star--nos-2  { bottom: 15%; left: 5%; }
+/* Daniel */
+.star--dan-1  { top: 12%; left: 4%; }
+.star--dan-2  { top: 35%; right: 7%; }
+.star--dan-3  { bottom: 18%; right: 15%; }
+/* Evento */
+.star--evt-1  { top: 18%; left: 6%; }
+.star--evt-2  { bottom: 12%; right: 8%; }
+/* Confirmar */
+.star--cfm-1  { top: 10%; right: 5%; }
+.star--cfm-2  { bottom: 20%; left: 8%; }
+/* Regalos */
+.star--reg-1  { top: 15%; right: 6%; }
+.star--reg-2  { bottom: 10%; left: 10%; }
+/* Cierre */
+.star--fin-1  { top: 20%; left: 12%; }
+.star--fin-2  { top: 30%; right: 10%; }
+
 @keyframes twinkle {
   0%, 100% { opacity: 0.2; }
   50%      { opacity: 0.7; }
