@@ -58,7 +58,9 @@ tedaniel.minorcortes.com/
 ├── js/main.js
 ├── assets/
 │   ├── images/
+│   │   └── web/            ← WebP producción (mobile/tablet/desktop/bg)
 │   └── videos/
+├── images/                  ← Master PNGs (gitignored, no deploy)
 ├── docs/
 │   ├── PROJECT_CONTEXT.md   ← this file
 │   └── AGENT_RULES.md       ← agent workflow rules

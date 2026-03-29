@@ -15,3 +15,6 @@ deploy.sh
 
 # Build artifacts
 node_modules/
+
+# Master source images (no deploy, solo local)
+/images/
