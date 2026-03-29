@@ -49,23 +49,41 @@
   <main>
     <section id="hero" class="section-hero" aria-label="Bienvenida">
 
-      <!-- Capa 0: Fondo acuarela (futura imagen full-bleed) -->
+      <!-- Capa 0: Fondo acuarela (complementa textura CSS global) -->
       <div class="hero-bg" aria-hidden="true"></div>
 
-      <!-- Capa 1: Zonas decorativas para assets de acuarela -->
+      <!-- Capa 1: Assets decorativos acuarela -->
       <div class="hero-decor" aria-hidden="true">
-        <div class="hero-asset hero-asset--left">
-          <!-- Futuro: caballo balancín acuarela (512×512 @2x) -->
-        </div>
-        <div class="hero-asset hero-asset--right">
-          <!-- Futuro: oso de peluche acuarela (512×512 @2x) -->
-        </div>
-        <div class="hero-asset hero-asset--top-left">
-          <!-- Futuro: estrellas + nubes acuarela (512×512 @2x) -->
-        </div>
-        <div class="hero-asset hero-asset--top-right">
-          <!-- Futuro: móvil de cuna acuarela (512×512 @2x) -->
-        </div>
+        <img class="hero-asset hero-asset--moon"
+             src="assets/images/web/mobile/moon-01.webp"
+             srcset="assets/images/web/mobile/moon-01.webp 128w,
+                     assets/images/web/tablet/moon-01.webp 256w,
+                     assets/images/web/desktop/moon-01.webp 256w"
+             sizes="(max-width: 767px) 80px,
+                    (max-width: 1279px) 112px,
+                    160px"
+             alt="" width="256" height="256"
+             loading="eager" decoding="async">
+        <img class="hero-asset hero-asset--movil"
+             src="assets/images/web/mobile/movil-01.webp"
+             srcset="assets/images/web/mobile/movil-01.webp 256w,
+                     assets/images/web/tablet/movil-01.webp 384w,
+                     assets/images/web/desktop/movil-01.webp 512w"
+             sizes="(max-width: 767px) 80px,
+                    (max-width: 1279px) 112px,
+                    160px"
+             alt="" width="256" height="290"
+             loading="eager" decoding="async">
+        <img class="hero-asset hero-asset--bear"
+             src="assets/images/web/mobile/bear-02.webp"
+             srcset="assets/images/web/mobile/bear-02.webp 256w,
+                     assets/images/web/tablet/bear-02.webp 384w,
+                     assets/images/web/desktop/bear-02.webp 512w"
+             sizes="(max-width: 767px) 120px,
+                    (max-width: 1279px) 180px,
+                    240px"
+             alt="" width="256" height="256"
+             loading="eager" decoding="async">
       </div>
 
       <!-- Capa 2: Contenido principal -->
@@ -116,8 +134,18 @@
 
       </div>
 
-      <!-- Slot: motivo decorativo futuro (globo pastel, 512×512 @2x) -->
-      <div class="section-decor section-decor--nosotros" aria-hidden="true"></div>
+      <!-- Motivo decorativo: osito acuarela -->
+      <img class="decor decor--nosotros"
+           src="assets/images/web/mobile/bear-05.webp"
+           srcset="assets/images/web/mobile/bear-05.webp 256w,
+                   assets/images/web/tablet/bear-05.webp 384w,
+                   assets/images/web/desktop/bear-05.webp 512w"
+           sizes="(max-width: 767px) 100px,
+                  (max-width: 1279px) 140px,
+                  180px"
+           alt="" aria-hidden="true"
+           width="256" height="256"
+           loading="lazy" decoding="async">
 
       <!-- Estrellas decorativas -->
       <svg class="star star--sm star--nos-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
@@ -128,6 +156,29 @@
       <div class="container">
         <h2 class="font-display">Sobre Daniel</h2>
       </div>
+      <!-- Motivos decorativos -->
+      <img class="decor decor--daniel-chupeta"
+           src="assets/images/web/mobile/chupeta-01.webp"
+           srcset="assets/images/web/mobile/chupeta-01.webp 256w,
+                   assets/images/web/tablet/chupeta-01.webp 384w,
+                   assets/images/web/desktop/chupeta-01.webp 512w"
+           sizes="(max-width: 767px) 70px,
+                  (max-width: 1279px) 100px,
+                  120px"
+           alt="" aria-hidden="true"
+           width="256" height="256"
+           loading="lazy" decoding="async">
+      <img class="decor decor--daniel-star"
+           src="assets/images/web/mobile/stars-02.webp"
+           srcset="assets/images/web/mobile/stars-02.webp 96w,
+                   assets/images/web/tablet/stars-02.webp 192w,
+                   assets/images/web/desktop/stars-02.webp 192w"
+           sizes="(max-width: 767px) 50px,
+                  (max-width: 1279px) 70px,
+                  90px"
+           alt="" aria-hidden="true"
+           width="192" height="192"
+           loading="lazy" decoding="async">
       <!-- Estrellas decorativas -->
       <svg class="star star--xs star--dan-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
       <svg class="star star--sm star--dan-2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
@@ -138,6 +189,18 @@
       <div class="container">
         <h2 class="font-display">El Evento</h2>
       </div>
+      <!-- Motivo decorativo: caballo balancín -->
+      <img class="decor decor--evento-horse"
+           src="assets/images/web/mobile/horse-01.webp"
+           srcset="assets/images/web/mobile/horse-01.webp 256w,
+                   assets/images/web/tablet/horse-01.webp 384w,
+                   assets/images/web/desktop/horse-01.webp 512w"
+           sizes="(max-width: 767px) 100px,
+                  (max-width: 1279px) 140px,
+                  180px"
+           alt="" aria-hidden="true"
+           width="256" height="256"
+           loading="lazy" decoding="async">
       <!-- Estrellas decorativas -->
       <svg class="star star--sm star--evt-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
       <svg class="star star--xs star--evt-2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
@@ -156,6 +219,18 @@
       <div class="container">
         <h2 class="font-display">Regalos y Contribuciones</h2>
       </div>
+      <!-- Motivo decorativo: nubes acuarela -->
+      <img class="decor decor--regalos-clouds"
+           src="assets/images/web/mobile/clouds-02.webp"
+           srcset="assets/images/web/mobile/clouds-02.webp 256w,
+                   assets/images/web/tablet/clouds-02.webp 384w,
+                   assets/images/web/desktop/clouds-02.webp 512w"
+           sizes="(max-width: 767px) 100px,
+                  (max-width: 1279px) 140px,
+                  180px"
+           alt="" aria-hidden="true"
+           width="256" height="256"
+           loading="lazy" decoding="async">
       <!-- Estrellas decorativas -->
       <svg class="star star--sm star--reg-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
       <svg class="star star--xs star--reg-2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
@@ -167,6 +242,29 @@
         <!-- Texto neutral, fácil de reemplazar luego -->
         <p class="font-display">Cindy y Minor</p>
       </div>
+      <!-- Motivos decorativos: oso + nubes -->
+      <img class="decor decor--cierre-bear"
+           src="assets/images/web/mobile/bear-04.webp"
+           srcset="assets/images/web/mobile/bear-04.webp 256w,
+                   assets/images/web/tablet/bear-04.webp 384w,
+                   assets/images/web/desktop/bear-04.webp 512w"
+           sizes="(max-width: 767px) 100px,
+                  (max-width: 1279px) 140px,
+                  180px"
+           alt="" aria-hidden="true"
+           width="256" height="256"
+           loading="lazy" decoding="async">
+      <img class="decor decor--cierre-clouds"
+           src="assets/images/web/mobile/clouds-02.webp"
+           srcset="assets/images/web/mobile/clouds-02.webp 256w,
+                   assets/images/web/tablet/clouds-02.webp 384w,
+                   assets/images/web/desktop/clouds-02.webp 512w"
+           sizes="(max-width: 767px) 120px,
+                  (max-width: 1279px) 160px,
+                  200px"
+           alt="" aria-hidden="true"
+           width="256" height="256"
+           loading="lazy" decoding="async">
       <!-- Estrellas decorativas -->
       <svg class="star star--xs star--fin-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
       <svg class="star star--sm star--fin-2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
