@@ -43,6 +43,9 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --shadow-card: 0 4px 12px rgba(95, 67, 49, 0.05);
+
+  /* Layout */
+  --header-height: 4rem;
 }
 
 /* ---- Reset ---- */
@@ -54,7 +57,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 4rem;
+  scroll-padding-top: var(--header-height);
 }
 
 body {
@@ -197,40 +200,83 @@ h1, h2, h3 {
     animation: none;
     opacity: 0.35;
   }
+  .hero-asset--bear {
+    animation: none;
+  }
 }
 
 /* ---- Secciones Base ---- */
 .section-hero {
-  min-height: 100svh;
+  position: relative;
+  min-height: calc(100vh - var(--header-height));   /* fallback explícito */
+  min-height: calc(100svh - var(--header-height));  /* mejora progresiva */
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: var(--color-bg);
-  position: relative;
+  justify-content: flex-start;
   overflow: hidden;
+  background-color: var(--color-bg);
   text-align: center;
   flex-direction: column;
   isolation: isolate;
 }
 
-/* ---- Hero: Capa de fondo ---- */
-.hero-bg {
+/* ---- Hero: Nuevo Sistema de Capas ---- */
+.hero-layer {
   position: absolute;
   inset: 0;
-  z-index: 0;
-  background-color: var(--color-bg);
-  background-image: url('../assets/images/web/bg/background-mobile.webp');
+  pointer-events: none;
   background-size: cover;
   background-position: center bottom;
-  opacity: 0.35;
+  background-repeat: no-repeat;
 }
 
-/* ---- Hero: Zonas decorativas ---- */
+.hero-layer--base {
+  z-index: 0;
+  background-image: url('../assets/images/web/hero/fondo_base.webp');
+}
+
+.hero-layer--moving-clouds {
+  z-index: 1;
+  background-image: url('../assets/images/web/hero/nubes_movimiento.webp');
+  background-position: 0 bottom;
+  opacity: 0;
+  animation: 
+    drift-clouds 120s linear infinite,
+    fade-in-clouds 3s ease forwards;
+  will-change: background-position;
+}
+
+@keyframes drift-clouds {
+  0% { background-position: 0 bottom; }
+  100% { background-position: -2000px bottom; }
+}
+
+@keyframes fade-in-clouds {
+  to { opacity: 0.65; }
+}
+
+.hero-decor--bg {
+  z-index: 2;
+}
+
+.hero-layer--mountains {
+  z-index: 3;
+  background-image: url('../assets/images/web/hero/montanas_frontales.webp');
+}
+
+.hero-decor--fg {
+  z-index: 4;
+}
+
 .hero-decor {
   position: absolute;
   inset: 0;
-  z-index: 1;
   pointer-events: none;
+  animation: decor-reveal 2.5s ease-out;
+}
+
+@keyframes decor-reveal {
+  from { opacity: 0; }
 }
 
 .hero-asset {
@@ -244,30 +290,240 @@ h1, h2, h3 {
   left: 5%;
   width: 80px;
   height: auto;
+  animation: gentle-glow 10s ease-in-out infinite,
+             moon-react 14s ease-in-out infinite;
+  transition: scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.4s ease, filter 0.3s ease;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='24' font-size='24'%3E👆🏼%3C/text%3E%3C/svg%3E") 14 0, pointer;
+  pointer-events: auto;
+}
+.hero-asset--moon:hover {
+  scale: 1.14;
+  transform: rotate(8deg) translateY(-3px);
+  filter: brightness(1.06) drop-shadow(0 0 10px rgba(244, 227, 166, 0.35));
+}
+
+/* Nubes atmosféricas flotantes (Seamless Loop) */
+.hero-asset--cloud-1 {
+  top: 25%;
+  left: 0;
+  width: 180px;
+  opacity: 0.30;
+  animation: drift-right 60s linear infinite;
+  will-change: translate;
+}
+.hero-asset--cloud-2 {
+  bottom: 25%;
+  right: 0;
+  width: 220px;
+  opacity: 0.20;
+  animation: drift-left 75s linear infinite;
+  will-change: translate;
+}
+.hero-asset--cloud-3 {
+  top: 10%;
+  right: 0;
+  width: 160px;
+  opacity: 0.25;
+  animation: drift-left 90s linear infinite;
+  animation-delay: -30s;
+  will-change: translate;
+}
+.hero-asset--cloud-4 {
+  top: 45%;
+  left: -5%;
+  width: 150px;
+  opacity: 0.15;
+  animation: drift-right 70s linear infinite;
+  animation-delay: -15s;
+  transform: scaleX(-1);
+  will-change: translate;
+}
+.hero-asset--cloud-5 {
+  top: 15%;
+  right: -5%;
+  width: 120px;
+  opacity: 0.35;
+  animation: drift-left 95s linear infinite;
+  transform: scaleX(-1);
+  will-change: translate;
+}
+.hero-asset--cloud-6 {
+  top: 60%;
+  right: -10%;
+  width: 250px;
+  opacity: 0.18;
+  animation: drift-left 130s linear infinite;
+  transform: rotate(-3deg);
+  will-change: translate;
+}
+
+/* Nubes solitarias de apoyo — muy lentas, baja opacidad */
+.hero-asset--cloud-7 {
+  bottom: 10%;
+  left: -8%;
+  width: 280px;
+  opacity: 0.12;
+  animation: drift-right 150s linear infinite;
+  animation-delay: -40s;
+  transform: scaleX(-1) scale(0.9) rotate(2deg);
+  will-change: translate;
+}
+.hero-asset--cloud-8 {
+  top: 35%;
+  right: -3%;
+  width: 110px;
+  opacity: 0.22;
+  animation: drift-left 110s linear infinite;
+  animation-delay: -55s;
+  transform: scaleX(-1);
+  will-change: translate;
+}
+.hero-asset--cloud-9 {
+  bottom: 35%;
+  left: -5%;
+  width: 90px;
+  opacity: 0.18;
+  animation: drift-right 100s linear infinite;
+  animation-delay: -25s;
+  transform: scaleX(-1) scale(0.85);
+  will-change: translate;
+}
+
+/* Nubes atmosféricas detrás del oso — base visual y profundidad */
+.hero-asset--cloud-bear-1 {
+  bottom: 8%;
+  left: 15%;
+  width: 320px;
+  opacity: 0.14;
+  animation: drift-right 140s linear infinite;
+  animation-delay: -60s;
+  will-change: translate;
+}
+.hero-asset--cloud-bear-2 {
+  bottom: 2%;
+  right: 10%;
+  width: 260px;
+  opacity: 0.11;
+  animation: drift-left 120s linear infinite;
+  animation-delay: -35s;
+  transform: scaleX(-1);
+  will-change: translate;
+}
+.hero-asset--cloud-bear-3 {
+  bottom: 15%;
+  left: 30%;
+  width: 200px;
+  opacity: 0.08;
+  animation: drift-right 160s linear infinite;
+  animation-delay: -80s;
+  transform: scale(0.9) rotate(2deg);
+  will-change: translate;
+}
+.hero-asset--cloud-bear-4 {
+  bottom: 5%;
+  left: 5%;
+  width: 280px;
+  opacity: 0.12;
+  animation: drift-right 130s linear infinite;
+  animation-delay: -45s;
+  transform: scaleX(-1) scale(0.85);
+  will-change: translate;
+}
+.hero-asset--cloud-bear-5 {
+  bottom: 18%;
+  right: 5%;
+  width: 240px;
+  opacity: 0.09;
+  animation: drift-left 150s linear infinite;
+  animation-delay: -70s;
+  transform: rotate(-2deg);
+  will-change: translate;
 }
 
 /* Móvil de cuna — superior derecha */
 .hero-asset--movil {
   top: 8%;
   right: 5%;
-  width: 80px;
+  width: 100px;
   height: auto;
-  animation: gentle-sway 6s ease-in-out infinite;
+  animation: gentle-sway 8s ease-in-out infinite;
   transform-origin: top center;
+  transition: scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.4s ease, filter 0.3s ease;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='24' font-size='24'%3E👆🏼%3C/text%3E%3C/svg%3E") 14 0, pointer;
+  pointer-events: auto;
+}
+.hero-asset--movil:hover {
+  scale: 1.12;
+  transform: rotate(-15deg);
+  filter: drop-shadow(0 6px 16px rgba(95, 67, 49, 0.2));
 }
 
 /* Oso con globos — inferior centro */
 .hero-asset--bear {
-  bottom: 5%;
+  bottom: 2%;
   left: 50%;
   transform: translateX(-50%);
-  width: 120px;
+  width: 280px;
   height: auto;
+  opacity: 1;
+  animation: bear-hover 7s ease-in-out infinite;
+  transition: scale 0.4s ease;
+  pointer-events: auto;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='24' font-size='24'%3E👆🏼%3C/text%3E%3C/svg%3E") 14 0, pointer;
+}
+
+.hero-asset--bear:hover {
+  scale: 1.06;
+}
+
+/* Oso: la <img> dentro del <picture> hereda el sizing */
+.hero-asset--bear img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 @keyframes gentle-sway {
-  0%, 100% { transform: rotate(-2deg); }
-  50%      { transform: rotate(2deg); }
+  0%, 100% { rotate: -2deg; }
+  50%      { rotate: 2deg; }
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, -4px); }
+}
+
+@keyframes bear-hover {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(-12px); }
+}
+
+@keyframes gentle-glow {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 0.75; }
+}
+
+/* Movimiento ocasional de la luna — 85% del tiempo quieta */
+@keyframes moon-react {
+  0%, 80%, 100% {
+    rotate: -2deg; translate: 0 0;
+  }
+  85% {
+    rotate: 6deg; translate: 0 -6px;
+  }
+  90% {
+    rotate: -4deg; translate: 0 2px;
+  }
+}
+
+@keyframes drift-right {
+  0%   { translate: -300px 0; }
+  100% { translate: 110vw 0; }
+}
+
+@keyframes drift-left {
+  0%   { translate: 300px 0; }
+  100% { translate: -110vw 0; }
 }
 
 /* ---- Hero: Contenido ---- */
@@ -278,41 +534,178 @@ h1, h2, h3 {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  padding: 0 1.5rem;
+  padding: 15vh 1.5rem 0 1.5rem;  /* Centra visualmente en el espacio sobre el oso */
 }
 
 .hero-eyebrow {
-  font-size: var(--text-lg);
-  color: var(--color-camel);
-  letter-spacing: 0.1em;
-  font-weight: 400;
-}
-
-.hero-title {
-  font-size: clamp(3rem, 10vw, 6rem);
+  margin-bottom: 0.5rem;
+  font-size: var(--text-base);
   color: var(--color-text-dark);
-  line-height: 1.1;
-  margin: 0.25rem 0;
-}
-
-.hero-divider {
-  width: 60px;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--color-camel),
-    transparent
-  );
-  margin: 0.75rem 0;
-}
-
-.hero-subtitle {
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
-  color: var(--color-text);
-  letter-spacing: 0.25em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.hero-date {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-text-dark);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.hero-logo-container {
+  margin: 1rem 0;
+}
+
+.hero-main-logo {
+  width: 250px;
+  max-width: 80vw;
+  height: auto;
+  display: block;
+  animation: occasional-logo-pulse 20s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Micro-interacción orgánica del logo — sin glow, puro movimiento geométrico */
+@keyframes occasional-logo-pulse {
+  0%, 85%, 100% { transform: scale(1) translateY(0); }
+  92%           { transform: scale(1.02) translateY(-2px); }
+}
+
+/* Partículas atmosféricas — 8 puntos suaves, lentos, baja opacidad */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+.particle--1 { background-color: var(--color-sand); top: 15%; left: 15%; width: 6px; height: 6px; opacity: 0.15; animation: particle-float 25s ease-in-out infinite; }
+.particle--2 { background-color: var(--color-dusty-blue); top: 35%; right: 20%; width: 8px; height: 8px; opacity: 0.18; animation: particle-float-reverse 30s ease-in-out infinite; }
+.particle--3 { background-color: var(--color-butter-yellow); bottom: 40%; left: 25%; width: 5px; height: 5px; opacity: 0.12; animation: particle-float 28s ease-in-out infinite; animation-delay: -10s; }
+.particle--4 { background-color: var(--color-sand); top: 55%; left: 80%; width: 4px; height: 4px; opacity: 0.14; animation: particle-float-reverse 22s ease-in-out infinite; animation-delay: -5s; }
+.particle--5 { background-color: var(--color-dusty-blue); top: 65%; left: 10%; width: 7px; height: 7px; opacity: 0.16; animation: particle-float 35s ease-in-out infinite; animation-delay: -15s; }
+.particle--6 { background-color: var(--color-butter-yellow); top: 20%; right: 40%; width: 5px; height: 5px; opacity: 0.10; animation: particle-float-reverse 20s ease-in-out infinite; animation-delay: -2s; }
+.particle--7 { background-color: var(--color-sand); bottom: 15%; right: 30%; width: 6px; height: 6px; opacity: 0.15; animation: particle-float 32s ease-in-out infinite; animation-delay: -8s; }
+.particle--8 { background-color: var(--color-dusty-blue); top: 8%; left: 50%; width: 8px; height: 8px; opacity: 0.08; animation: particle-float-reverse 38s ease-in-out infinite; animation-delay: -20s; }
+
+/* Estrellas Acuarela Hero */
+.hero-asset--star {
+  opacity: 0.55;
+}
+.hero-asset--star-1 { top: 60%; left: 10%; width: 50px; animation: star-sparkle 5s ease-in-out infinite; }
+.hero-asset--star-2 { top: 45%; right: 12%; width: 45px; animation: star-sparkle 7s ease-in-out infinite 1.5s; }
+.hero-asset--star-3 { bottom: 15%; left: 8%; width: 80px; animation: star-sparkle 6s ease-in-out infinite 2s; }
+.hero-asset--star-4 { bottom: 25%; right: 15%; width: 50px; animation: star-sparkle 4s ease-in-out infinite 0.5s; }
+.hero-asset--star-5 { top: 12%; right: 45%; width: 45px; animation: star-sparkle 5.5s ease-in-out infinite 3s; }
+.hero-asset--star-6 { top: 30%; left: 30%; width: 55px; animation: star-sparkle 6.5s ease-in-out infinite 1s; }
+.hero-asset--star-7 { bottom: 40%; right: 35%; width: 35px; animation: star-sparkle 4.5s ease-in-out infinite 4s; }
+.hero-asset--star-8 { top: 75%; right: 5%; width: 60px; animation: star-sparkle 5s ease-in-out infinite 2.5s; }
+.hero-asset--star-9 { top: 5%; left: 35%; width: 45px; animation: star-sparkle 5.2s ease-in-out infinite 0.8s; }
+.hero-asset--star-10 { bottom: 5%; right: 25%; width: 55px; animation: star-sparkle 6.8s ease-in-out infinite 3.5s; }
+.hero-asset--star-11 { top: 55%; right: 40%; width: 30px; animation: star-sparkle 4.2s ease-in-out infinite 1.2s; }
+.hero-asset--star-12 { bottom: 35%; left: 35%; width: 48px; animation: star-sparkle 5.8s ease-in-out infinite 2.2s; }
+.hero-asset--star-13 { top: 18%; left: 22%; width: 28px; animation: star-sparkle 7.5s ease-in-out infinite 0.3s; }
+.hero-asset--star-14 { top: 38%; right: 28%; width: 32px; animation: star-sparkle 5.5s ease-in-out infinite 1.8s; }
+.hero-asset--star-15 { top: 70%; left: 42%; width: 22px; animation: star-sparkle 8s ease-in-out infinite 4.5s; }
+.hero-asset--star-16 { bottom: 48%; right: 8%; width: 35px; animation: star-sparkle 6.2s ease-in-out infinite 2.8s; }
+
+@keyframes star-sparkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.9) rotate(-2deg); }
+  50% { opacity: 1; transform: scale(1.25) rotate(4deg); }
+}
+
+@keyframes particle-float {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.10; }
+  50%      { transform: translateY(-15px) translateX(8px); opacity: 0.20; }
+}
+/* Partículas adicionales — trayectoria diagonal */
+.particle--9  { background-color: var(--color-sand); top: 42%; right: 8%; width: 5px; height: 5px; opacity: 0.12; animation: particle-drift 26s ease-in-out infinite; }
+.particle--10 { background-color: var(--color-butter-yellow); bottom: 22%; left: 45%; width: 4px; height: 4px; opacity: 0.10; animation: particle-drift 32s ease-in-out infinite -12s; }
+
+/* Dust particles — polvo atmosférico suave y orgánico */
+.glint {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Partículas de polvo: siempre presentes, opacidad fija baja, drift suave */
+.glint--1 {
+  top: 20%; left: 38%;
+  width: 22px; height: 22px;
+  background: rgba(185, 168, 138, 0.28);
+  filter: blur(3px);
+  animation: dust-drift-a 38s ease-in-out infinite;
+}
+.glint--2 {
+  top: 48%; right: 22%;
+  width: 16px; height: 16px;
+  background: rgba(148, 172, 196, 0.22);
+  filter: blur(2px);
+  animation: dust-drift-b 50s ease-in-out infinite -15s;
+}
+.glint--3 {
+  top: 28%; left: 10%;
+  width: 26px; height: 26px;
+  background: rgba(185, 168, 138, 0.20);
+  filter: blur(4px);
+  animation: dust-drift-c 44s ease-in-out infinite -8s;
+}
+.glint--4 {
+  top: 60%; right: 30%;
+  width: 18px; height: 18px;
+  background: rgba(210, 192, 130, 0.24);
+  filter: blur(2.5px);
+  animation: dust-drift-a 55s ease-in-out infinite -22s;
+}
+.glint--5 {
+  top: 14%; right: 24%;
+  width: 20px; height: 20px;
+  background: rgba(148, 172, 196, 0.20);
+  filter: blur(3px);
+  animation: dust-drift-b 42s ease-in-out infinite -5s;
+}
+.glint--6 {
+  top: 72%; left: 30%;
+  width: 20px; height: 20px;
+  background: rgba(185, 168, 138, 0.26);
+  filter: blur(3px);
+  animation: dust-drift-c 60s ease-in-out infinite -30s;
+}
+
+/* Drift lento multi-dirección — sin loops obvios */
+@keyframes dust-drift-a {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(8px, -12px); }
+  50%  { transform: translate(-5px, -20px); }
+  75%  { transform: translate(12px, -8px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes dust-drift-b {
+  0%   { transform: translate(0, 0); }
+  30%  { transform: translate(-10px, -8px); }
+  55%  { transform: translate(6px, -16px); }
+  80%  { transform: translate(-4px, -6px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes dust-drift-c {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(5px, -10px); }
+  48%  { transform: translate(-8px, -18px); }
+  72%  { transform: translate(10px, -12px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes particle-drift {
+  0%, 100% { transform: translate(0, 0); opacity: 0.08; }
+  50%      { transform: translate(12px, -18px); opacity: 0.18; }
+}
+
+@keyframes particle-float-reverse {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.08; }
+  50%      { transform: translateY(-10px) translateX(-10px); opacity: 0.15; }
 }
 
 /* ---- Hero: Scroll Cue ---- */
@@ -327,8 +720,13 @@ h1, h2, h3 {
 .scroll-arrow {
   display: block;
   font-size: 1.5rem;
-  color: var(--color-taupe);
-  animation: bounce-down 2s ease-in-out infinite;
+  color: var(--color-camel);
+  animation: bounce-down 2s ease-in-out infinite, pulse-fade 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-fade {
+  0%, 100% { opacity: 0.3; }
+  50%      { opacity: 0.9; }
 }
 
 @keyframes bounce-down {
@@ -345,14 +743,19 @@ h1, h2, h3 {
     width: 112px;
   }
   .hero-asset--movil {
-    width: 112px;
+    width: 140px;
   }
   .hero-asset--bear {
-    width: 180px;
+    width: 500px;
   }
-  .hero-divider {
-    width: 80px;
+  .hero-content {
+    padding-top: 12vh;
   }
+  .hero-asset--cloud-bear-1 { opacity: 0.18; }
+  .hero-asset--cloud-bear-2 { opacity: 0.14; }
+  .hero-asset--cloud-bear-3 { opacity: 0.10; }
+  .hero-asset--cloud-bear-4 { opacity: 0.15; }
+  .hero-asset--cloud-bear-5 { opacity: 0.12; }
 }
 
 @media (min-width: 1280px) {
@@ -365,34 +768,83 @@ h1, h2, h3 {
     left: 8%;
   }
   .hero-asset--movil {
-    width: 160px;
+    width: 180px;
     top: 6%;
     right: 8%;
   }
   .hero-asset--bear {
-    width: 240px;
-    bottom: 3%;
+    width: 540px;
+    bottom: 2%;
   }
-  .hero-divider {
-    width: 100px;
+  .hero-main-logo {
+    width: 340px;
   }
+  .hero-content {
+    padding-top: 10vh;
+  }
+  .header-logo {
+    width: 150px;
+  }
+  .hero-asset--cloud-bear-1 { opacity: 0.20; }
+  .hero-asset--cloud-bear-2 { opacity: 0.16; }
+  .hero-asset--cloud-bear-3 { opacity: 0.12; }
+  .hero-asset--cloud-bear-4 { opacity: 0.18; }
+  .hero-asset--cloud-bear-5 { opacity: 0.14; }
 }
 
 .section-surface { padding: var(--space-section); background-color: var(--color-surface); position: relative; overflow: hidden; }
 .section-default { padding: var(--space-section); background-color: var(--color-bg); position: relative; overflow: hidden; }
 .section-accent  { padding: var(--space-section); background-color: var(--color-sand); position: relative; overflow: hidden; }
-.section-footer  { padding: var(--space-section); background-color: var(--color-surface); text-align: center; position: relative; overflow: hidden; }
+.section-footer  { 
+  padding: 6rem 0; 
+  background: linear-gradient(to bottom, var(--color-surface), rgba(216, 179, 138, 0.04)); 
+  text-align: center; 
+  position: relative; 
+  overflow: hidden; 
+}
 
 /* ==========================================================================
    Sección: Nosotros
    Layout foto + texto, mobile-first
    ========================================================================== */
 
+/* Fondo con profundidad visual (layering orgánico) */
+#nosotros {
+  position: relative;
+  z-index: 1;
+}
+
+#nosotros::before {
+  content: '';
+  position: absolute;
+  top: -5%; 
+  left: -15%;
+  width: 75vw; 
+  height: 75vw;
+  background: radial-gradient(ellipse at 30% 40%, rgba(216, 179, 138, 0.10) 0%, rgba(193, 169, 137, 0.04) 40%, rgba(255,255,255,0) 65%);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+#nosotros::after {
+  content: '';
+  position: absolute;
+  bottom: -8%; 
+  right: -8%;
+  width: 55vw; 
+  height: 55vw;
+  background: radial-gradient(ellipse at 70% 60%, rgba(201, 216, 222, 0.07) 0%, rgba(193, 169, 137, 0.04) 35%, rgba(255,255,255,0) 65%);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+}
+
 .nosotros-layout {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-xl); /* Mayor aire entre foto y texto */
   text-align: center;
 }
 
@@ -408,28 +860,40 @@ h1, h2, h3 {
   aspect-ratio: 4 / 5;
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--color-taupe);
+  box-shadow: 0 20px 40px rgba(139, 115, 85, 0.12), 0 5px 15px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(193, 169, 137, 0.25);
+  transform: translateZ(0); /* Hardware accel para evitar bleeding de imágenes en bordes */
 }
 
-.photo-placeholder {
+/* ---- Photo Slider (Nosotros) ---- */
+.photo-slider {
+  position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(
-    135deg,
-    var(--color-sand) 0%,
-    var(--color-surface) 100%
-  );
-  opacity: 0.35;
 }
 
-.photo-placeholder span {
-  color: var(--color-text);
-  font-size: var(--text-lg);
-  letter-spacing: 0.05em;
+.photo-slider__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition:
+    opacity 1.2s ease-in-out,
+    transform 6.2s ease-in-out;
+  transform: scale(1);
+  will-change: opacity, transform;
+}
+
+.photo-slider__slide--active {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-slider__slide { transition: none; }
+  .photo-slider__slide--active { transform: scale(1); }
 }
 
 /* ---- Texto ---- */
@@ -437,37 +901,62 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
   max-width: 520px;
 }
 
 .nosotros-title {
-  font-size: var(--text-2xl);
+  font-size: clamp(2rem, 5vw, 2.5rem);
   color: var(--color-text-dark);
+  letter-spacing: 0.03em;
 }
 
 /* Divider reutilizable para secciones */
 .section-divider {
-  width: 50px;
-  height: 1px;
+  width: 60px;
+  height: 2px;
   background: linear-gradient(
     to right,
     transparent,
     var(--color-camel),
     transparent
   );
-  margin: 0.25rem 0;
+  margin: 0.4rem 0 0.6rem;
+}
+
+.nosotros-highlight {
+  font-size: clamp(1.15rem, 3.8vw, 1.35rem);
+  line-height: 1.65;
+  color: #3E2B1C;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+.highlight-name {
+  font-family: var(--font-display);
+  font-size: 1.5em;
+  color: #B8935E;
+  font-weight: normal;
+  font-style: italic;
+  display: inline-block;
+  transform: translateY(1px);
+  letter-spacing: 0.02em;
 }
 
 .nosotros-message {
-  font-size: var(--text-base);
-  line-height: 1.8;
-  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #8B6F55;
+  max-width: 440px;
 }
 
-.nosotros-message strong {
-  color: var(--color-text-dark);
-  font-weight: 600;
+.nosotros-signature {
+  font-family: var(--font-script);
+  font-size: clamp(1.6rem, 5vw, 2.1rem);
+  color: #A07D55;
+  margin-top: 0.75rem;
+  line-height: 1.2;
 }
 
 /* ==========================================================================
@@ -482,19 +971,23 @@ h1, h2, h3 {
   z-index: 1;
 }
 
-/* Nosotros: osito inferior-derecha */
+/* Nosotros: osito — en flujo hasta desktop */
 .decor--nosotros {
-  bottom: 8%;
-  right: 2%;
-  width: 100px;
+  position: static;
+  display: block;
+  width: clamp(100px, 28vw, 150px);
   height: auto;
+  margin: var(--space-md) auto 0;
+  opacity: 0.5;
+  transform: scaleX(-1);
+  filter: drop-shadow(0 4px 8px rgba(139, 115, 85, 0.08));
 }
 
 /* Daniel: chupeta izquierda */
 .decor--daniel-chupeta {
-  bottom: 10%;
-  left: 2%;
-  width: 70px;
+  bottom: 12%;
+  left: 5%;
+  width: 90px;
   height: auto;
 }
 
@@ -502,15 +995,15 @@ h1, h2, h3 {
 .decor--daniel-star {
   top: 15%;
   right: 4%;
-  width: 50px;
+  width: 60px;
   height: auto;
 }
 
 /* Evento: caballo balancín inferior-izquierda */
 .decor--evento-horse {
-  bottom: 5%;
+  bottom: 8%;
   left: 3%;
-  width: 100px;
+  width: 120px;
   height: auto;
   animation: gentle-rock 5s ease-in-out infinite;
   transform-origin: bottom center;
@@ -525,52 +1018,59 @@ h1, h2, h3 {
 .decor--regalos-clouds {
   top: 5%;
   right: -2%;
-  width: 100px;
+  width: 120px;
   height: auto;
 }
 
-/* Cierre: oso inferior-centro */
-.decor--cierre-bear {
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
+/* Cierre: oso ilustrativo (ya no es fondo sino contenido) */
+.cierre-illustration {
+  margin-top: var(--space-lg);
+  display: inline-block;
+}
+
+.cierre-illustration img {
+  width: 160px;
   height: auto;
+  opacity: 0.75;
 }
 
 /* Cierre: nubes superior-derecha */
 .decor--cierre-clouds {
   top: 5%;
-  right: -3%;
+  right: 0%;
   width: 120px;
   height: auto;
-  opacity: 0.35;
+  opacity: 0.45;
 }
 
 /* ---- Nosotros: Tablet ---- */
 @media (min-width: 768px) {
   .nosotros-layout {
     flex-direction: row;
+    flex-wrap: wrap;         /* oso cae a segunda fila */
+    align-items: flex-start;
     text-align: left;
-    gap: var(--space-xl);
+    gap: var(--space-md);    /* gap reducido horizontalmente */
   }
 
   .nosotros-photo {
-    max-width: 300px;
+    max-width: 340px;
   }
 
   .nosotros-text {
+    flex: 1;                 /* toma todo el espacio disponible */
+    min-width: 260px;        /* nunca se aplasta */
     align-items: flex-start;
   }
 
-  /* Decor: Tablet scaling */
-  .decor--nosotros { width: 140px; }
+  /* Decor: Tablet — oso en segunda fila, centrado */
+  .decor--nosotros { flex-basis: 100%; width: 150px; max-width: 150px; margin: 0 auto; }
   .decor--daniel-chupeta { width: 100px; }
   .decor--daniel-star { width: 70px; }
   .decor--evento-horse { width: 140px; }
   .decor--regalos-clouds { width: 140px; }
-  .decor--cierre-bear { width: 140px; }
-  .decor--cierre-clouds { width: 160px; }
+  .decor--cierre-clouds { width: 160px; right: 0; }
+  .cierre-illustration img { width: 220px; }
 }
 
 /* ---- Nosotros: Desktop ---- */
@@ -580,17 +1080,24 @@ h1, h2, h3 {
   }
 
   .nosotros-text {
-    max-width: 560px;
+    max-width: 620px;        /* texto más cómodo en desktop */
   }
 
   /* Decor: Desktop scaling */
-  .decor--nosotros { width: 180px; right: 5%; }
+  .decor--nosotros {
+    position: absolute;
+    width: 175px;            /* mayor presencia en desktop */
+    bottom: 8%;
+    right: 4%;
+    margin: 0;
+    opacity: 0.5;
+  }
   .decor--daniel-chupeta { width: 120px; left: 3%; }
   .decor--daniel-star { width: 90px; right: 6%; }
   .decor--evento-horse { width: 180px; left: 5%; }
   .decor--regalos-clouds { width: 180px; right: 0; }
-  .decor--cierre-bear { width: 180px; }
   .decor--cierre-clouds { width: 200px; right: 0; }
+  .cierre-illustration img { width: 280px; }
 }
 
 /* Accesibilidad: desactivar animaciones decorativas */
@@ -620,11 +1127,10 @@ h1, h2, h3 {
   margin: 0 auto;
 }
 
-.nav-brand {
-  text-decoration: none;
-  font-weight: 700;
-  color: var(--color-text-dark);
-  font-size: var(--text-xl);
+.header-logo {
+  width: 130px;
+  height: auto;
+  display: block;
 }
 
 .nav-links {
@@ -807,3 +1313,60 @@ h1, h2, h3 {
     gap: 1.5rem;
   }
 }
+
+/* ==========================================================================
+   FASE 3C: ANIMACIONES DE REVELADO (SCROLL REVEAL)
+   Sensación Editorial Premium: Transiciones suaves (Out-Quart), desplazamientos cortos.
+   ========================================================================== */
+
+/* 1. Hero: Fade-in inicial simple (no en observer) */
+.hero-reveal {
+  animation: hero-fade-in 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes hero-fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* 2. Scroll Reveal Utils (Controladas por IntersectionObserver) */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Prevents flickering before JS kicks in */
+  will-change: opacity, transform;
+}
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity;
+}
+
+/* Clases aplicadas dinámicamente */
+.reveal-fade-up.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-fade.is-revealed {
+  opacity: 1;
+}
+
+/* 3. Delay Stagger (Editorial Rhythm) */
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.45s; }
+
+/* 4. Prevenir efectos en quienes piden reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .hero-reveal { animation: none; opacity: 1; }
+  .reveal-fade-up, .reveal-fade { 
+    opacity: 1; 
+    transform: none; 
+    transition: none; 
+  }
+}
+

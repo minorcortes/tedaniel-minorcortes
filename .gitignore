@@ -18,3 +18,5 @@ node_modules/
 
 # Master source images (no deploy, solo local)
 /images/
+capture_bear_responsive.js
+capture_responsive.js

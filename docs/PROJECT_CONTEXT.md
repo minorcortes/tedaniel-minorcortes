@@ -67,3 +67,21 @@ tedaniel.minorcortes.com/
 ├── deploy.sh                 ← FTP deploy (git-ignored)
 └── .ftp-credentials          ← FTP creds (git-ignored)
 ```
+
+## Implemented Features
+
+### Photo Slider — Sección "Nosotros"
+- **16 photos** (slide-00.jpg to slide-15.jpg) in `assets/images/web/nosotros/`
+- **Crossfade** (1.2s opacity transition) + **Ken Burns** (6.2s transform zoom 1→1.04)
+- **IntersectionObserver** autoplay: starts when section is 30% visible, pauses when off-screen
+- **State persistence**: resumes from current slide and remaining time, never resets
+- **Accessibility**: respects `prefers-reduced-motion` (static first photo, no animation)
+- **Implementation**: Vanilla CSS transitions + Vanilla JS (~50 lines in `main.js`)
+
+## Lessons Learned
+
+### Ken Burns: Use `transition`, never `@keyframes`
+- **Problem**: Using `animation: ken-burns 6.2s forwards` causes a visible "snap-back" when the `--active` class is removed (transform instantly resets to scale(1)).
+- **Solution**: Use `transition: transform 6.2s ease-in-out` on the base class + `transform: scale(1.04)` on the active class. The de-zoom happens through the same transition and is invisible because opacity drops to 0 in only 1.2s.
+- **Rule**: For effects toggled by class addition/removal, always use CSS `transition`. Reserve `@keyframes` for continuous/infinite loops only.
+

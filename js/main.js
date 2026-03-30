@@ -110,4 +110,73 @@
     });
   }
 
+  // ---- Scroll Reveal (Fase 3C) ----
+  const revealElements = document.querySelectorAll('.reveal-fade-up, .reveal-fade');
+  
+  if (revealElements.length > 0) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          revealObserver.unobserve(entry.target); // Animación solo una vez (sin efecto yoyo)
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: "0px 0px -50px 0px", // Revela justo antes de que el elemento cruce el borde inferior
+      threshold: 0.15
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  }
+
+  // ---- Photo Slider (Nosotros) ----
+  var slider = document.getElementById('nosotros-slider');
+  if (slider) {
+    var slides = slider.querySelectorAll('.photo-slider__slide');
+    var current = 0;
+    var timerId = null;
+    var lastChangeTime = Date.now();
+    var remainingTime = 6200;
+    var SLIDE_INTERVAL = 6200; // 5s visible + 1.2s crossfade
+
+    function showSlide(index) {
+      slides[current].classList.remove('photo-slider__slide--active');
+      current = index % slides.length;
+      slides[current].classList.add('photo-slider__slide--active');
+      lastChangeTime = Date.now();
+      remainingTime = SLIDE_INTERVAL;
+    }
+
+    function sliderTick() {
+      showSlide(current + 1);
+      timerId = setTimeout(sliderTick, SLIDE_INTERVAL);
+    }
+
+    function startSlider() {
+      if (timerId) return;
+      var delay = remainingTime > 0 ? remainingTime : SLIDE_INTERVAL;
+      timerId = setTimeout(sliderTick, delay);
+    }
+
+    function stopSlider() {
+      var elapsed = Date.now() - lastChangeTime;
+      remainingTime = Math.max(SLIDE_INTERVAL - elapsed, 0);
+      clearTimeout(timerId);
+      timerId = null;
+    }
+
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReduced) {
+      var sliderObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          entry.isIntersecting ? startSlider() : stopSlider();
+        });
+      }, { threshold: 0.3 });
+
+      sliderObserver.observe(slider);
+    }
+  }
+
 })();

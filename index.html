@@ -25,7 +25,9 @@
   <!-- Sticky Navigation -->
   <header id="header" class="site-header">
     <nav class="site-nav" aria-label="Navegación principal">
-      <a href="#hero" class="nav-brand font-display">Té Daniel</a>
+      <a href="#hero" class="nav-brand">
+        <img src="assets/images/web/logo/tedaniel_logo.webp" alt="Té Daniel" class="header-logo" loading="eager">
+      </a>
 
       <!-- Botón hamburguesa para menú móvil -->
       <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
@@ -49,11 +51,69 @@
   <main>
     <section id="hero" class="section-hero" aria-label="Bienvenida">
 
-      <!-- Capa 0: Fondo acuarela (complementa textura CSS global) -->
-      <div class="hero-bg" aria-hidden="true"></div>
+      <!-- NUEVO SISTEMA DE CAPAS DE FONDO -->
+      <!-- Capa 0: Fondo base estático -->
+      <div class="hero-layer hero-layer--base" aria-hidden="true"></div>
 
-      <!-- Capa 1: Assets decorativos acuarela -->
-      <div class="hero-decor" aria-hidden="true">
+      <!-- Capa 1: Nubes en movimiento continuo -->
+      <div class="hero-layer hero-layer--moving-clouds" aria-hidden="true"></div>
+
+      <!-- Capa 2: Atmosférica de Fondo (Detrás de las montañas) -->
+      <div class="hero-decor hero-decor--bg" aria-hidden="true">
+        <img class="hero-asset hero-asset--cloud-1" src="assets/images/web/mobile/clouds-04.webp" alt="" aria-hidden="true" width="256" loading="eager">
+        <img class="hero-asset hero-asset--cloud-2" src="assets/images/web/mobile/clouds-02.webp" alt="" aria-hidden="true" width="256" loading="eager">
+        <img class="hero-asset hero-asset--cloud-3" src="assets/images/web/mobile/clouds-05.webp" alt="" aria-hidden="true" width="256" loading="eager">
+        <img class="hero-asset hero-asset--cloud-4" src="assets/images/web/mobile/clouds-03.webp" alt="" aria-hidden="true" width="256" loading="eager">
+        <img class="hero-asset hero-asset--cloud-5" src="assets/images/web/mobile/clouds-06.webp" alt="" aria-hidden="true" width="256" loading="eager">
+        <img class="hero-asset hero-asset--cloud-6" src="assets/images/web/mobile/clouds-07.webp" alt="" aria-hidden="true" width="256" loading="eager">
+        
+        <!-- Partículas atmosféricas suaves -->
+        <div class="particle particle--1" aria-hidden="true"></div>
+        <div class="particle particle--2" aria-hidden="true"></div>
+        <div class="particle particle--3" aria-hidden="true"></div>
+        <div class="particle particle--4" aria-hidden="true"></div>
+        <div class="particle particle--5" aria-hidden="true"></div>
+        <div class="particle particle--6" aria-hidden="true"></div>
+        <div class="particle particle--7" aria-hidden="true"></div>
+        <div class="particle particle--8" aria-hidden="true"></div>
+        <div class="particle particle--9" aria-hidden="true"></div>
+        <div class="particle particle--10" aria-hidden="true"></div>
+        <div class="glint glint--1" aria-hidden="true"></div>
+        <div class="glint glint--2" aria-hidden="true"></div>
+        <div class="glint glint--3" aria-hidden="true"></div>
+        <div class="glint glint--4" aria-hidden="true"></div>
+        <div class="glint glint--5" aria-hidden="true"></div>
+        <div class="glint glint--6" aria-hidden="true"></div>
+
+        <!-- Estrellas acuarela (Remplazan a los SVG) -->
+        <img class="hero-asset hero-asset--star hero-asset--star-1" src="assets/images/web/mobile/stars-03.webp" alt="" aria-hidden="true" loading="eager">
+        <img class="hero-asset hero-asset--star hero-asset--star-2" src="assets/images/web/mobile/stars-04.webp" alt="" aria-hidden="true" loading="eager">
+        <img class="hero-asset hero-asset--star hero-asset--star-3" src="assets/images/web/mobile/stars-05.webp" alt="" aria-hidden="true" loading="eager">
+        <img class="hero-asset hero-asset--star hero-asset--star-4" src="assets/images/web/mobile/stars-03.webp" alt="" aria-hidden="true" loading="eager">
+        <img class="hero-asset hero-asset--star hero-asset--star-5" src="assets/images/web/mobile/stars-05.webp" alt="" aria-hidden="true" loading="eager">
+        <img class="hero-asset hero-asset--star hero-asset--star-6" src="assets/images/web/mobile/stars-04.webp" alt="" aria-hidden="true" loading="eager">
+        <img class="hero-asset hero-asset--star hero-asset--star-7" src="assets/images/web/mobile/stars-03.webp" alt="" aria-hidden="true" loading="eager">
+        <img class="hero-asset hero-asset--star hero-asset--star-8" src="assets/images/web/mobile/stars-05.webp" alt="" aria-hidden="true" loading="eager">
+        <img class="hero-asset hero-asset--star hero-asset--star-9" src="assets/images/web/mobile/stars-04.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="hero-asset hero-asset--star hero-asset--star-10" src="assets/images/web/mobile/stars-05.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="hero-asset hero-asset--star hero-asset--star-11" src="assets/images/web/mobile/stars-03.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="hero-asset hero-asset--star hero-asset--star-12" src="assets/images/web/mobile/stars-04.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="hero-asset hero-asset--star hero-asset--star-13" src="assets/images/web/mobile/stars-05.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="hero-asset hero-asset--star hero-asset--star-14" src="assets/images/web/mobile/stars-03.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="hero-asset hero-asset--star hero-asset--star-15" src="assets/images/web/mobile/stars-04.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="hero-asset hero-asset--star hero-asset--star-16" src="assets/images/web/mobile/stars-05.webp" alt="" aria-hidden="true" loading="lazy">
+
+        <!-- Nubes solitarias de apoyo -->
+        <img class="hero-asset hero-asset--cloud-7" src="assets/images/web/mobile/clouds-05.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="hero-asset hero-asset--cloud-8" src="assets/images/web/mobile/clouds-03.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="hero-asset hero-asset--cloud-9" src="assets/images/web/mobile/clouds-07.webp" alt="" aria-hidden="true" loading="lazy">
+      </div>
+
+      <!-- Capa 3: Montañas frontales -->
+      <div class="hero-layer hero-layer--mountains" aria-hidden="true"></div>
+
+      <!-- Capa 4: Frente Interactivo / Elementos principales -->
+      <div class="hero-decor hero-decor--fg" aria-hidden="true">
         <img class="hero-asset hero-asset--moon"
              src="assets/images/web/mobile/moon-01.webp"
              srcset="assets/images/web/mobile/moon-01.webp 128w,
@@ -74,24 +134,40 @@
                     160px"
              alt="" width="256" height="290"
              loading="eager" decoding="async">
-        <img class="hero-asset hero-asset--bear"
-             src="assets/images/web/mobile/bear-02.webp"
-             srcset="assets/images/web/mobile/bear-02.webp 256w,
-                     assets/images/web/tablet/bear-02.webp 384w,
-                     assets/images/web/desktop/bear-02.webp 512w"
-             sizes="(max-width: 767px) 120px,
-                    (max-width: 1279px) 180px,
-                    240px"
-             alt="" width="256" height="256"
-             loading="eager" decoding="async">
+
+        <!-- Nubes atmosféricas detrás del oso — base visual y profundidad -->
+        <img class="hero-asset hero-asset--cloud-bear-1" src="assets/images/web/mobile/clouds-04.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="hero-asset hero-asset--cloud-bear-2" src="assets/images/web/mobile/clouds-06.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="hero-asset hero-asset--cloud-bear-3" src="assets/images/web/mobile/clouds-02.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="hero-asset hero-asset--cloud-bear-4" src="assets/images/web/mobile/clouds-03.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="hero-asset hero-asset--cloud-bear-5" src="assets/images/web/mobile/clouds-07.webp" alt="" aria-hidden="true" loading="lazy">
+
+        <picture class="hero-asset hero-asset--bear" aria-hidden="true">
+          <!-- prefers-reduced-motion: fallback estático -->
+          <source media="(prefers-reduced-motion: reduce) and (min-width: 1280px)"
+                  srcset="assets/images/web/desktop/bear-02.webp">
+          <source media="(prefers-reduced-motion: reduce) and (min-width: 768px)"
+                  srcset="assets/images/web/tablet/bear-02.webp">
+          <source media="(prefers-reduced-motion: reduce)"
+                  srcset="assets/images/web/mobile/bear-02.webp">
+          <!-- Normal: oso animado responsive -->
+          <source media="(min-width: 1280px)"
+                  srcset="assets/images/web/desktop/bear-animated.webp">
+          <source media="(min-width: 768px)"
+                  srcset="assets/images/web/tablet/bear-animated.webp">
+          <img src="assets/images/web/mobile/bear-animated.webp"
+               alt="" width="240" height="281"
+               loading="eager" decoding="async">
+        </picture>
       </div>
 
-      <!-- Capa 2: Contenido principal -->
-      <div class="hero-content">
-        <p class="hero-eyebrow font-display">Estás invitado(a) a</p>
-        <h1 class="hero-title font-script">Té Daniel</h1>
-        <div class="hero-divider" aria-hidden="true"></div>
-        <p class="hero-subtitle font-display">Baby Shower</p>
+      <!-- Capa 2: Contenido principal (Animación pura de CSS en carga, ignorada por Observer) -->
+      <div class="hero-content hero-reveal">
+        <p class="hero-eyebrow font-display">Estás invitado al</p>
+        <h1 class="hero-logo-container">
+          <img src="assets/images/web/logo/tedaniel_logo.webp" alt="Té Daniel Baby Shower" class="hero-main-logo" loading="eager">
+        </h1>
+        <p class="hero-date font-body">Sábado 23 de mayo &middot; 5:00 p. m.</p>
       </div>
 
       <!-- Indicador de scroll -->
@@ -109,43 +185,61 @@
       <div class="container nosotros-layout">
 
         <!-- Foto de los padres -->
-        <div class="nosotros-photo">
+        <div class="nosotros-photo reveal-fade-up">
           <div class="photo-frame">
-            <!-- Slot: foto real de Cindy y Minor (reemplazar con <img>) -->
-            <div class="photo-placeholder" role="img" aria-label="Foto de Cindy y Minor">
-              <span class="font-display">Cindy & Minor</span>
+            <div class="photo-slider" id="nosotros-slider" aria-label="Fotos de Cindy y Minor">
+              <img class="photo-slider__slide photo-slider__slide--active" src="assets/images/web/nosotros/slide-00.jpg" alt="Cindy y Minor" loading="eager">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-01.jpg" alt="" loading="lazy">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-02.jpg" alt="" loading="lazy">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-03.jpg" alt="" loading="lazy">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-04.jpg" alt="" loading="lazy">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-05.jpg" alt="" loading="lazy">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-06.jpg" alt="" loading="lazy">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-07.jpg" alt="" loading="lazy">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-08.jpg" alt="" loading="lazy">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-09.jpg" alt="" loading="lazy">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-10.jpg" alt="" loading="lazy">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-11.jpg" alt="" loading="lazy">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-12.jpg" alt="" loading="lazy">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-13.jpg" alt="" loading="lazy">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-14.jpg" alt="" loading="lazy">
+              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-15.jpg" alt="" loading="lazy">
             </div>
           </div>
         </div>
 
         <!-- Mensaje de bienvenida -->
         <div class="nosotros-text">
-          <h2 class="nosotros-title font-display">Nosotros</h2>
-          <div class="section-divider" aria-hidden="true"></div>
-          <p class="nosotros-message">
-            Con mucha alegría y emoción, los invitamos a celebrar
-            la próxima llegada de nuestro pequeño <strong>Daniel</strong>.
+          <h2 class="nosotros-title font-display reveal-fade-up delay-1">Nosotros</h2>
+          <div class="section-divider reveal-fade-up delay-1" aria-hidden="true"></div>
+          
+          <p class="nosotros-highlight reveal-fade-up delay-2">
+            Con mucha alegría y emoción, los invitamos a celebrar la próxima llegada de nuestro pequeño <span class="highlight-name">Daniel</span>.
           </p>
-          <p class="nosotros-message">
-            Este momento tan especial es aún más significativo
-            cuando lo compartimos con las personas que más queremos.
+          
+          <p class="nosotros-message reveal-fade-up delay-3">
+            Este momento tan especial es aún más significativo cuando lo compartimos con las personas que más queremos.
+          </p>
+          
+          <p class="nosotros-signature reveal-fade-up delay-3">
+            Con amor, Cindy & Minor
           </p>
         </div>
 
-      </div>
+        <!-- Motivo decorativo: osito acuarela -->
+        <img class="decor decor--nosotros reveal-fade"
+             src="assets/images/web/mobile/bear-05.webp"
+             srcset="assets/images/web/mobile/bear-05.webp 256w,
+                     assets/images/web/tablet/bear-05.webp 384w,
+                     assets/images/web/desktop/bear-05.webp 512w"
+             sizes="(max-width: 767px) 80px,
+                    (max-width: 1279px) 90px,
+                    140px"
+             alt="" aria-hidden="true"
+             width="256" height="256"
+             loading="lazy" decoding="async">
 
-      <!-- Motivo decorativo: osito acuarela -->
-      <img class="decor decor--nosotros"
-           src="assets/images/web/mobile/bear-05.webp"
-           srcset="assets/images/web/mobile/bear-05.webp 256w,
-                   assets/images/web/tablet/bear-05.webp 384w,
-                   assets/images/web/desktop/bear-05.webp 512w"
-           sizes="(max-width: 767px) 100px,
-                  (max-width: 1279px) 140px,
-                  180px"
-           alt="" aria-hidden="true"
-           width="256" height="256"
-           loading="lazy" decoding="async">
+      </div>
 
       <!-- Estrellas decorativas -->
       <svg class="star star--sm star--nos-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
@@ -154,7 +248,7 @@
 
     <section id="daniel" class="section-default">
       <div class="container">
-        <h2 class="font-display">Sobre Daniel</h2>
+        <h2 class="font-display reveal-fade-up">Sobre Daniel</h2>
       </div>
       <!-- Motivos decorativos -->
       <img class="decor decor--daniel-chupeta"
@@ -187,7 +281,7 @@
 
     <section id="evento" class="section-accent">
       <div class="container">
-        <h2 class="font-display">El Evento</h2>
+        <h2 class="font-display reveal-fade-up">El Evento</h2>
       </div>
       <!-- Motivo decorativo: caballo balancín -->
       <img class="decor decor--evento-horse"
@@ -208,7 +302,7 @@
 
     <section id="confirmar" class="section-surface">
       <div class="container">
-        <h2 class="font-display">Confirmar Asistencia</h2>
+        <h2 class="font-display reveal-fade-up">Confirmar Asistencia</h2>
       </div>
       <!-- Estrellas decorativas -->
       <svg class="star star--xs star--cfm-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
@@ -217,10 +311,10 @@
 
     <section id="regalos" class="section-default">
       <div class="container">
-        <h2 class="font-display">Regalos y Contribuciones</h2>
+        <h2 class="font-display reveal-fade-up">Regalos y Contribuciones</h2>
       </div>
       <!-- Motivo decorativo: nubes acuarela -->
-      <img class="decor decor--regalos-clouds"
+      <img class="decor decor--regalos-clouds reveal-fade"
            src="assets/images/web/mobile/clouds-02.webp"
            srcset="assets/images/web/mobile/clouds-02.webp 256w,
                    assets/images/web/tablet/clouds-02.webp 384w,
@@ -238,22 +332,24 @@
 
     <section id="cierre" class="section-footer">
       <div class="container">
-        <h2 class="font-script">Con amor,</h2>
+        <h2 class="font-script reveal-fade-up">Con amor,</h2>
         <!-- Texto neutral, fácil de reemplazar luego -->
-        <p class="font-display">Cindy y Minor</p>
+        <p class="font-display reveal-fade-up delay-1">Cindy y Minor</p>
+        
+        <div class="cierre-illustration reveal-fade-up delay-2" aria-hidden="true">
+          <img src="assets/images/web/mobile/bear-04.webp"
+               srcset="assets/images/web/mobile/bear-04.webp 256w,
+                       assets/images/web/tablet/bear-04.webp 384w,
+                       assets/images/web/desktop/bear-04.webp 512w"
+               sizes="(max-width: 767px) 160px,
+                      (max-width: 1279px) 220px,
+                      280px"
+               alt=""
+               width="256" height="256"
+               loading="lazy" decoding="async">
+        </div>
       </div>
-      <!-- Motivos decorativos: oso + nubes -->
-      <img class="decor decor--cierre-bear"
-           src="assets/images/web/mobile/bear-04.webp"
-           srcset="assets/images/web/mobile/bear-04.webp 256w,
-                   assets/images/web/tablet/bear-04.webp 384w,
-                   assets/images/web/desktop/bear-04.webp 512w"
-           sizes="(max-width: 767px) 100px,
-                  (max-width: 1279px) 140px,
-                  180px"
-           alt="" aria-hidden="true"
-           width="256" height="256"
-           loading="lazy" decoding="async">
+      <!-- Motivos decorativos: nubes -->
       <img class="decor decor--cierre-clouds"
            src="assets/images/web/mobile/clouds-02.webp"
            srcset="assets/images/web/mobile/clouds-02.webp 256w,

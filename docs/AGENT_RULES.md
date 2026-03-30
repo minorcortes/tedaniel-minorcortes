@@ -36,6 +36,75 @@
 2. Check if a skill applies to the current task
 3. Propose changes as diff
 4. Apply only after approval
-5. Test responsiveness across all breakpoints
+5. Test responsiveness using Puppeteer (see Rule 11 below)
 6. Commit with descriptive messages
 7. Push to GitHub
+
+---
+
+## Rule 11 — Responsive Validation Protocol (MANDATORY)
+
+> **Established 2026-03-30 after bear/flex-basis bug in Nosotros section.**
+
+### ❌ NEVER use these methods to validate responsive layout:
+- Browser agent DOM screenshots
+- `browser_resize_window` tool
+- Any screenshot taken at the native Mac display resolution
+
+**Reason:** The browser agent cannot reduce below the physical display resolution (~1728px on this Mac). All screenshots will appear as desktop — false positives guaranteed.
+
+### ✅ ALWAYS use Puppeteer for responsive validation:
+
+Use `capture_bear_responsive.js` as the base script (or adapt it). Run:
+
+```bash
+node capture_bear_responsive.js
+```
+
+**Mandatory checkpoints for ANY responsive fix:**
+
+| Viewport | Why |
+|---|---|
+| 415px | iPhone SE / portrait |
+| 700px | Critical intermediate zone |
+| 768px | Tablet portrait breakpoint boundary |
+| 1024px | Tablet landscape |
+| 1280px | Desktop breakpoint boundary |
+| 1440px | Desktop standard |
+
+### ✅ Mandatory JS measurements per breakpoint:
+
+```js
+const bear = document.querySelector('.selector');
+const rect = bear.getBoundingClientRect();
+const cs = window.getComputedStyle(bear);
+// Report: rect.width, rect.height, cs.position, cs.flexBasis, cs.display
+```
+
+Report must include: **width px + position (static/absolute) + layout row/column**.
+
+---
+
+## CSS Gotchas (learned in production)
+
+### 1. `flex-basis` overrides `width`
+When an element is a flex child, `flex-basis` takes priority over `width`.
+**Always pair with `max-width` to cap the rendered size:**
+```css
+/* ❌ Wrong — width ignored by flex */
+.el { flex-basis: 100%; width: 150px; }
+
+/* ✅ Correct — max-width enforces the cap */
+.el { flex-basis: 100%; width: 150px; max-width: 150px; }
+```
+
+### 2. Responsive bear layout strategy
+- `<768px` → `position: static`, `clamp(100px, 28vw, 150px)`, below text
+- `768px–1279px` → `position: static`, `max-width: 150px`, flex row or second row
+- `≥1280px` → `position: absolute`, `width: 175px`, decorative bottom-right
+
+### 3. Transitions vs @keyframes
+- **State changes (toggled):** Use `transition` only
+- **Infinite loops:** Use `@keyframes`
+- Mixing both on the same property causes snap-back bugs
+
