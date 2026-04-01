@@ -1261,7 +1261,7 @@ h1, h2, h3 {
   position: relative;
   width: 100%;
   background-color: var(--color-surface);
-  background-image: url('../images/seccion_dani/fondo_contador_nacimiento.webp?v=2');
+  background-image: url('../assets/images/web/seccion_dani/fondo_contador_nacimiento.webp?v=3');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
