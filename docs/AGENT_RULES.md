@@ -20,7 +20,7 @@
 
 9. **No deployment without instruction** — Do not run deploy.sh or upload any files unless the user explicitly requests it.
 
-10. **Performance** — Keep assets optimized. Lazy-load images. Minimize HTTP requests. No unnecessary dependencies.
+10. **Performance** — Keep assets optimized. Lazy-load images. Minimize HTTP requests. No unnecessary dependencies. (See Rule 12 for critical exceptions).
 
 ## Skills Available
 
@@ -82,6 +82,31 @@ const cs = window.getComputedStyle(bear);
 ```
 
 Report must include: **width px + position (static/absolute) + layout row/column**.
+
+---
+
+## Rule 12 — Asset Optimization & Visual Validation Protocol (CRITICAL)
+
+> **Established 2026-04-01 after destructive optimization of the hero bear animation.**
+
+### Asset Classification
+- **CRÍTICOS:** Hero (oso animado), Logo principal, Elementos centrales above-the-fold.
+- **IMPORTANTES:** Slider “Nosotros”, Sección Daniel, Sección Evento.
+- **SECUNDARIOS:** Decoraciones, Fondos, Elementos pequeños.
+
+### Mandatory Rules for Optimizations
+1. **PROTECCIÓN DE ASSETS CRÍTICOS:** Assets dentro del hero NO pueden ser degradados agresivamente. Cualquier optimización debe mantener fluidez, timing, proporción y calidad visual.
+2. **PROHIBIDO REDUCIR FRAMES SIN VALIDACIÓN:** No reducir frames automáticamente, no alterar FPS sin aprobación, no re-encodear animaciones críticas agresivamente.
+3. **VALIDACIÓN VISUAL OBLIGATORIA:** Antes de finalizar cambios visuales, verificar que no hay regresión (especialmente en hero y animaciones).
+4. **OPTIMIZACIÓN INTELIGENTE:** Priorizar peso SOLO cuando no afecte la percepción visual. Gana calidad visual en zonas críticas sobre el ahorro de KB.
+5. **EXCEPCIONES:** Assets críticos pueden ser pesados si son clave para branding y UX.
+
+### Protocolo de Optimización
+1. Identificar clasificación del asset.
+2. Aplicar optimización proporcional.
+3. NO tocar animaciones sin validación.
+4. Verificar visualmente que no haya pérdida de calidad/fluidez.
+5. Confirmar antes de cerrar tarea.
 
 ---
 

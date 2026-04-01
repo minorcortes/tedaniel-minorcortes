@@ -8,16 +8,58 @@
   <meta name="robots" content="noindex, nofollow, noarchive, noimageindex, nosnippet">
   <meta name="googlebot" content="noindex, nofollow, noarchive, noimageindex, nosnippet">
 
-  <title>Té Daniel</title>
+  <title>Té Daniel Baby Shower | Invitación</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Té de Daniel - Baby Shower">
+  <meta property="og:description" content="Acompáñanos a celebrar la llegada de Daniel. Sábado 23 de mayo · 5:00 p.m.">
+  <meta property="og:image" content="https://tedaniel.minorcortes.com/assets/images/web/banner_open_graph.png">
+  <meta property="og:url" content="https://tedaniel.minorcortes.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Té de Daniel">
+  <meta property="og:locale" content="es_CR">
+
+  <!-- WhatsApp / General Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Té de Daniel - Baby Shower">
+  <meta name="twitter:description" content="Acompáñanos a celebrar la llegada de Daniel. Sábado 23 de mayo · 5:00 p.m.">
+  <meta name="twitter:image" content="https://tedaniel.minorcortes.com/assets/images/web/banner_open_graph.png">
+
+  <!-- Favicons & App Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/web/favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/web/favicon/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/web/favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#FCFBF9">
+
+  <!-- Preloads para el Fondo de "Nosotros" basado en Aspect Ratio -->
+  <link rel="preload" href="assets/images/web/bg/fondo_nosotros_con_oso_9_16.webp" as="image" media="(max-width: 599px)">
+  <link rel="preload" href="assets/images/web/bg/fondo_nosotros_con_oso.webp" as="image" media="(min-width: 1200px)">
 
   <!-- Google Fonts: Cormorant Infant (títulos), Great Vibes (acento), Quicksand (cuerpo) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@400;600;700&family=Great+Vibes&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.min.css">
 </head>
 <body>
+
+  <!-- =========================================================================
+       PRELOADER PREMIUM
+       ========================================================================= -->
+  <div id="premium-loader" class="premium-loader" aria-hidden="true">
+    <div class="loader-content">
+      <!-- Se usa el asset móvil optimizado cargado con ultra alta prioridad y sin lazy loading -->
+      <img src="assets/images/web/mobile/horse-01.webp" alt="" class="loader-horse" aria-hidden="true" width="105" height="105" loading="eager" fetchpriority="high">
+      <div class="loader-text-wrapper">
+        <span class="loader-text">Cargando...</span>
+        <span id="loader-percentage" class="loader-percentage">0%</span>
+      </div>
+      <div class="loader-bar-container">
+        <div id="loader-bar-fill" class="loader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- Capa 0: Textura base de acuarela (fijo, cubre toda la página) -->
   <div class="bg-texture" aria-hidden="true"></div>
@@ -26,7 +68,7 @@
   <header id="header" class="site-header">
     <nav class="site-nav" aria-label="Navegación principal">
       <a href="#hero" class="nav-brand">
-        <img src="assets/images/web/logo/tedaniel_logo.webp" alt="Té Daniel" class="header-logo" loading="eager">
+        <img src="assets/images/web/logo/tedaniel_logo.webp" alt="Té de Daniel" class="header-logo" loading="eager">
       </a>
 
       <!-- Botón hamburguesa para menú móvil -->
@@ -39,8 +81,11 @@
       </button>
 
       <ul id="nav-links" class="nav-links">
+        <li><a href="#hero">Inicio</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#daniel">Daniel</a></li>
         <li><a href="#evento">Evento</a></li>
+        <li><a href="#cuota">Cuota</a></li>
         <li><a href="#confirmar" class="nav-btn-cta">Confirmar</a></li>
         <li><a href="#regalos">Regalos</a></li>
       </ul>
@@ -135,6 +180,18 @@
              alt="" width="256" height="290"
              loading="eager" decoding="async">
 
+        <!-- Avión Atmosférico del Hero -->
+        <div class="hero-avion-wrapper" aria-hidden="true">
+          <div class="hero-avion-flight-path">
+            <div class="hero-avion-bobbing">
+              <picture>
+                <source media="(min-width: 768px)" srcset="assets/images/web/decor/desktop/oso_avion_800.webp">
+                <img src="assets/images/web/decor/mobile/oso_avion_400.webp" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
+          </div>
+        </div>
+
         <!-- Nubes atmosféricas detrás del oso — base visual y profundidad -->
         <img class="hero-asset hero-asset--cloud-bear-1" src="assets/images/web/mobile/clouds-04.webp" alt="" aria-hidden="true" loading="lazy">
         <img class="hero-asset hero-asset--cloud-bear-2" src="assets/images/web/mobile/clouds-06.webp" alt="" aria-hidden="true" loading="lazy">
@@ -163,9 +220,9 @@
 
       <!-- Capa 2: Contenido principal (Animación pura de CSS en carga, ignorada por Observer) -->
       <div class="hero-content hero-reveal">
-        <p class="hero-eyebrow font-display">Estás invitado al</p>
+        <p class="hero-eyebrow font-display"><strong style="font-weight: 600;">Acompáñanos al</strong></p>
         <h1 class="hero-logo-container">
-          <img src="assets/images/web/logo/tedaniel_logo.webp" alt="Té Daniel Baby Shower" class="hero-main-logo" loading="eager">
+          <img src="assets/images/web/logo/tedaniel_logo.webp" alt="Té de Daniel Baby Shower" class="hero-main-logo" loading="eager">
         </h1>
         <p class="hero-date font-body">Sábado 23 de mayo &middot; 5:00 p. m.</p>
       </div>
@@ -181,30 +238,62 @@
 
     </section>
 
+    <!-- Puente Narrativo: Cuenta Regresiva -->
+    <section id="countdown" class="countdown-section">
+      <div class="container countdown-container reveal-fade-up delay-1">
+        <p class="countdown-eyebrow">Faltan para el evento</p>
+        <div class="countdown-timer" id="countdown-timer" data-target="2026-05-23T17:00:00-06:00">
+          <div class="time-block">
+            <span class="time-number" id="cd-days">00</span>
+            <span class="time-label">DÍAS</span>
+          </div>
+          <div class="time-separator" aria-hidden="true">:</div>
+          <div class="time-block">
+            <span class="time-number" id="cd-hours">00</span>
+            <span class="time-label">HORAS</span>
+          </div>
+          <div class="time-separator" aria-hidden="true">:</div>
+          <div class="time-block">
+            <span class="time-number" id="cd-mins">00</span>
+            <span class="time-label">MIN</span>
+          </div>
+          <div class="time-separator" aria-hidden="true">:</div>
+          <div class="time-block">
+            <span class="time-number" id="cd-secs">00</span>
+            <span class="time-label">SEG</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="nosotros" class="section-surface">
       <div class="container nosotros-layout">
 
         <!-- Foto de los padres -->
         <div class="nosotros-photo reveal-fade-up">
-          <div class="photo-frame">
-            <div class="photo-slider" id="nosotros-slider" aria-label="Fotos de Cindy y Minor">
-              <img class="photo-slider__slide photo-slider__slide--active" src="assets/images/web/nosotros/slide-00.jpg" alt="Cindy y Minor" loading="eager">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-01.jpg" alt="" loading="lazy">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-02.jpg" alt="" loading="lazy">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-03.jpg" alt="" loading="lazy">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-04.jpg" alt="" loading="lazy">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-05.jpg" alt="" loading="lazy">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-06.jpg" alt="" loading="lazy">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-07.jpg" alt="" loading="lazy">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-08.jpg" alt="" loading="lazy">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-09.jpg" alt="" loading="lazy">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-10.jpg" alt="" loading="lazy">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-11.jpg" alt="" loading="lazy">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-12.jpg" alt="" loading="lazy">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-13.jpg" alt="" loading="lazy">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-14.jpg" alt="" loading="lazy">
-              <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-15.jpg" alt="" loading="lazy">
+          <div class="foto-frame">
+            <div class="foto-inner">
+              <div class="photo-slider" id="nosotros-slider" aria-label="Fotos de Cindy y Minor">
+                <img class="photo-slider__slide photo-slider__slide--active" src="assets/images/web/nosotros/slide-00.webp" alt="Cindy y Minor" loading="eager">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-01.webp" alt="" loading="lazy">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-02.webp" alt="" loading="lazy">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-03.webp" alt="" loading="lazy">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-04.webp" alt="" loading="lazy">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-05.webp" alt="" loading="lazy">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-06.webp" alt="" loading="lazy">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-07.webp" alt="" loading="lazy">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-08.webp" alt="" loading="lazy">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-09.webp" alt="" loading="lazy">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-10.webp" alt="" loading="lazy">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-11.webp" alt="" loading="lazy">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-12.webp" alt="" loading="lazy">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-13.webp" alt="" loading="lazy">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-14.webp" alt="" loading="lazy">
+                <img class="photo-slider__slide" src="assets/images/web/nosotros/slide-15.webp" alt="" loading="lazy">
+              </div>
             </div>
+            <button class="slider-arrow prev" aria-label="Anterior foto">‹</button>
+            <button class="slider-arrow next" aria-label="Siguiente foto">›</button>
           </div>
         </div>
 
@@ -214,7 +303,7 @@
           <div class="section-divider reveal-fade-up delay-1" aria-hidden="true"></div>
           
           <p class="nosotros-highlight reveal-fade-up delay-2">
-            Con mucha alegría y emoción, los invitamos a celebrar la próxima llegada de nuestro pequeño <span class="highlight-name">Daniel</span>.
+            Con mucha alegría y emoción, los invitamos a celebrar la próxima llegada de nuestro <span class="nowrap-desktop">pequeño <span class="highlight-name">Daniel</span></span>.
           </p>
           
           <p class="nosotros-message reveal-fade-up delay-3">
@@ -226,19 +315,6 @@
           </p>
         </div>
 
-        <!-- Motivo decorativo: osito acuarela -->
-        <img class="decor decor--nosotros reveal-fade"
-             src="assets/images/web/mobile/bear-05.webp"
-             srcset="assets/images/web/mobile/bear-05.webp 256w,
-                     assets/images/web/tablet/bear-05.webp 384w,
-                     assets/images/web/desktop/bear-05.webp 512w"
-             sizes="(max-width: 767px) 80px,
-                    (max-width: 1279px) 90px,
-                    140px"
-             alt="" aria-hidden="true"
-             width="256" height="256"
-             loading="lazy" decoding="async">
-
       </div>
 
       <!-- Estrellas decorativas -->
@@ -246,88 +322,614 @@
       <svg class="star star--xs star--nos-2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
     </section>
 
-    <section id="daniel" class="section-default">
-      <div class="container">
-        <h2 class="font-display reveal-fade-up">Sobre Daniel</h2>
+    <!-- Cuenta regresiva nacimiento Daniel -->
+    <section id="birth-countdown" class="birth-countdown-section reveal-fade-up">
+      <div class="birth-countdown-container">
+        <p class="birth-countdown-eyebrow font-body">Faltan</p>
+        <div class="birth-countdown-numbers font-display">
+          <span class="count-weeks" id="birth-weeks">0</span><span class="birth-countdown-unit" id="birth-weeks-unit">semanas</span>
+          <span class="birth-countdown-sep">y</span>
+          <span class="count-days" id="birth-days">0</span><span class="birth-countdown-unit" id="birth-days-unit">días</span>
+        </div>
+        <p class="birth-countdown-message">para que conozcamos a Daniel</p>
       </div>
-      <!-- Motivos decorativos -->
-      <img class="decor decor--daniel-chupeta"
-           src="assets/images/web/mobile/chupeta-01.webp"
-           srcset="assets/images/web/mobile/chupeta-01.webp 256w,
-                   assets/images/web/tablet/chupeta-01.webp 384w,
-                   assets/images/web/desktop/chupeta-01.webp 512w"
-           sizes="(max-width: 767px) 70px,
-                  (max-width: 1279px) 100px,
-                  120px"
-           alt="" aria-hidden="true"
-           width="256" height="256"
-           loading="lazy" decoding="async">
-      <img class="decor decor--daniel-star"
-           src="assets/images/web/mobile/stars-02.webp"
-           srcset="assets/images/web/mobile/stars-02.webp 96w,
-                   assets/images/web/tablet/stars-02.webp 192w,
-                   assets/images/web/desktop/stars-02.webp 192w"
-           sizes="(max-width: 767px) 50px,
-                  (max-width: 1279px) 70px,
-                  90px"
-           alt="" aria-hidden="true"
-           width="192" height="192"
-           loading="lazy" decoding="async">
-      <!-- Estrellas decorativas -->
-      <svg class="star star--xs star--dan-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
-      <svg class="star star--sm star--dan-2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
-      <svg class="star star--xs star--dan-3" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
+      <!-- Estrellas decorativas leves -->
+      <svg class="star star--sm star--bc-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
+    </section>
+
+    <section id="daniel" class="daniel-section daniel-section--full">
+
+      <!-- Texto superpuesto -->
+      <div class="daniel-overlay-text reveal-fade-up">
+        <h2 class="daniel-title font-display">Daniel</h2>
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <p class="daniel-body font-body">
+          Poco a poco nos vamos preparando para recibirte, viviendo cada etapa con ilusión.
+        </p>
+
+        <p class="daniel-body font-body">
+          Queremos compartir con ustedes este momento especial.
+          Aquí pueden verlo en su ultrasonido.
+        </p>
+
+        <p class="daniel-punchline font-script">
+          Daniel, aún eres muy pequeñito.
+        </p>
+      </div>
+
+      <!-- Imagen + video -->
+      <div class="daniel-visual">
+        <div class="daniel-monitor__wrapper">
+
+          <video class="daniel-monitor__video"
+                 autoplay loop muted playsinline
+                 poster="assets/images/web/daniel/ultrasonido_poster.jpg">
+            <source src="assets/images/web/daniel/daniel_ultrasonido.webm" type="video/webm">
+            <source src="assets/images/web/daniel/daniel_ultrasonido.mp4" type="video/mp4">
+          </video>
+
+          <picture>
+            <source media="(max-width: 1199px)"
+                    srcset="assets/images/web/daniel/daniel_overlay_expanded_top.webp"
+                    type="image/webp">
+            <img class="daniel-monitor__overlay"
+                 src="assets/images/web/daniel/daniel_overlay_expanded.webp"
+                 alt="Oso doctor revisando ultrasonido de Daniel"
+                 loading="lazy" decoding="async"
+                 width="4356" height="1536">
+          </picture>
+
+        </div>
+      </div>
+
     </section>
 
     <section id="evento" class="section-accent">
-      <div class="container">
-        <h2 class="font-display reveal-fade-up">El Evento</h2>
+      <div class="container evt-container">
+
+        <!-- 1. Caballito animado centrado arriba -->
+        <div class="evt-horse-wrapper reveal-fade-up">
+          <img class="decor--evento-top"
+               src="assets/images/web/mobile/horse-01.webp"
+               srcset="assets/images/web/mobile/horse-01.webp 256w,
+                       assets/images/web/tablet/horse-01.webp 384w,
+                       assets/images/web/desktop/horse-01.webp 512w"
+               sizes="(max-width: 767px) 100px,
+                      (max-width: 1279px) 140px,
+                      180px"
+               alt="" aria-hidden="true"
+               width="256" height="256"
+               loading="lazy" decoding="async">
+        </div>
+
+        <!-- 2. Título -->
+        <h2 class="font-display evt-title reveal-fade-up">El Evento</h2>
+        <div class="section-divider reveal-fade-up delay-1" aria-hidden="true"></div>
+
+        <!-- Bear móvil/tablet: centrado, visible solo en <992px -->
+        <div class="evt-oso-wrap evt-oso-wrap--mobile" aria-hidden="true">
+          <img src="assets/images/web/desktop/oso_mapa_seccion_evento.webp" class="evt-oso-decor" alt="" loading="lazy" decoding="async">
+        </div>
+
+        <!-- 3. Grid: Info + Visuales -->
+        <div class="evt-grid reveal-fade-up delay-1">
+
+          <!-- Columna izquierda: Información del evento -->
+          <div class="evt-info">
+            <div class="evt-block">
+              <p class="evt-label font-script">Cuándo</p>
+              <p class="evt-value"><strong>Sábado 23 de mayo</strong><br>5:00 p. m.</p>
+            </div>
+
+            <!-- Bear desktop: visible solo en ≥992px (entre Cuándo y Dónde) -->
+            <div class="evt-oso-wrap evt-oso-wrap--desktop" aria-hidden="true">
+              <img src="assets/images/web/desktop/oso_mapa_seccion_evento.webp" class="evt-oso-decor" alt="" loading="lazy" decoding="async">
+            </div>
+
+            <div class="evt-block">
+              <p class="evt-label font-script">Dónde</p>
+              <p class="evt-value"><strong>Salón de Eventos La Cabaña</strong><br>Tuetal Norte, Calle Loría<br>Alajuela, Costa Rica</p>
+            </div>
+
+            <!-- Botones de navegación -->
+            <div class="evt-actions">
+              <a href="https://www.google.co.cr/maps/place/Centro+de+Eventos+La+Caba%C3%B1a/@10.0426578,-84.221546,17z/data=!3m1!4b1!4m6!3m5!1s0x8fa0f7a7fc00d109:0xcdf87294fcfafeee!8m2!3d10.0426525!4d-84.2189711!16s%2Fg%2F11w5bj2kb0?entry=ttu"
+                 target="_blank" rel="noopener" class="evt-btn evt-btn--maps">
+                <img class="evt-btn-logo" src="assets/images/web/logo/logo_google_maps.webp" alt="" aria-hidden="true" width="24" height="24">
+                Ver ubicación en Google Maps
+              </a>
+              <a href="https://waze.com/ul/hd1u15s1u3"
+                 target="_blank" rel="noopener" class="evt-btn evt-btn--waze">
+                <img class="evt-btn-logo" src="assets/images/web/logo/logo_waze.webp" alt="" aria-hidden="true" width="24" height="24">
+                Abrir ruta en Waze
+              </a>
+            </div>
+          </div>
+
+          <!-- Columna derecha: Mapa + Foto -->
+          <div class="evt-visuals">
+            <div class="evt-map">
+              <iframe
+                src="https://www.google.com/maps?q=10.04266449046373,-84.21896579822014&z=16&output=embed"
+                width="100%"
+                height="300"
+                style="border:0;"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Ubicación Salón de Eventos La Cabaña">
+              </iframe>
+            </div>
+            <div class="evt-photo-wrapper">
+              <img src="assets/images/web/desktop/foto_entrada_la_cabana.webp"
+                   alt="Entrada del Salón de Eventos La Cabaña"
+                   class="evt-photo" loading="lazy" decoding="async">
+            </div>
+          </div>
+
+        </div>
       </div>
-      <!-- Motivo decorativo: caballo balancín -->
-      <img class="decor decor--evento-horse"
-           src="assets/images/web/mobile/horse-01.webp"
-           srcset="assets/images/web/mobile/horse-01.webp 256w,
-                   assets/images/web/tablet/horse-01.webp 384w,
-                   assets/images/web/desktop/horse-01.webp 512w"
-           sizes="(max-width: 767px) 100px,
-                  (max-width: 1279px) 140px,
-                  180px"
-           alt="" aria-hidden="true"
-           width="256" height="256"
-           loading="lazy" decoding="async">
+
       <!-- Estrellas decorativas -->
       <svg class="star star--sm star--evt-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
       <svg class="star star--xs star--evt-2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
+
     </section>
 
-    <section id="confirmar" class="section-surface">
+    <section id="cuota" class="section-default">
       <div class="container">
-        <h2 class="font-display reveal-fade-up">Confirmar Asistencia</h2>
+        <h2 class="font-display reveal-fade-up text-center">Cuota</h2>
+        <div class="section-divider reveal-fade-up"></div>
+        <p class="costos-intro reveal-fade-up text-center">
+          Esta cuota cubre la alimentación del evento y otros detalles de su organización.
+        </p>
+
+        <div class="costos-grid reveal-fade-up">
+          <div class="costo-card">
+            <span class="costo-category">Adultos</span>
+            <span class="costo-amount">₡14.000</span>
+          </div>
+          <div class="costo-card">
+            <span class="costo-category">Niños mayores de 10 años</span>
+            <span class="costo-amount">₡14.000</span>
+          </div>
+          <div class="costo-card">
+            <span class="costo-category">Niños de 5 a 10 años</span>
+            <span class="costo-amount">₡7.000</span>
+          </div>
+          <div class="costo-card costo-card--free">
+            <span class="costo-category">Niños menores de 5 años</span>
+            <span class="costo-amount">Sin costo</span>
+          </div>
+        </div>
+
+        <div class="costos-deadline reveal-fade-up">
+          <div class="deadline-text">
+            <span class="deadline-label">Fecha límite para confirmar y pagar tu cuota</span>
+            <span class="deadline-date font-display">30 de abril</span>
+          </div>
+        </div>
       </div>
-      <!-- Estrellas decorativas -->
-      <svg class="star star--xs star--cfm-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
-      <svg class="star star--sm star--cfm-2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
+
+      <!-- Sistema Decorativo Cuota (Reforzado) -->
+      <img class="decor decor-cuota-nube-izq"
+           src="assets/images/web/decor/desktop/clouds-03.webp"
+           srcset="assets/images/web/decor/mobile/clouds-03.webp 300w,
+                   assets/images/web/decor/tablet/clouds-03.webp 500w,
+                   assets/images/web/decor/desktop/clouds-03.webp 800w"
+           sizes="(max-width: 479px) 120px, (max-width: 991px) 140px, 240px"
+           alt="" aria-hidden="true" loading="lazy" decoding="async">
+           
+      <img class="decor decor-cuota-nube-der"
+           src="assets/images/web/decor/desktop/clouds-04.webp"
+           srcset="assets/images/web/decor/mobile/clouds-04.webp 300w,
+                   assets/images/web/decor/tablet/clouds-04.webp 500w,
+                   assets/images/web/decor/desktop/clouds-04.webp 800w"
+           sizes="(max-width: 479px) 100px, (max-width: 991px) 110px, 180px"
+           alt="" aria-hidden="true" loading="lazy" decoding="async">
+
+      <img class="decor decor-cuota-nube-sup"
+           src="assets/images/web/decor/desktop/clouds-05.webp"
+           srcset="assets/images/web/decor/mobile/clouds-05.webp 300w,
+                   assets/images/web/decor/tablet/clouds-05.webp 500w,
+                   assets/images/web/decor/desktop/clouds-05.webp 800w"
+           sizes="(max-width: 479px) 100px, (max-width: 991px) 100px, 130px"
+           alt="" aria-hidden="true" loading="lazy" decoding="async">
+           
+      <img class="decor decor-cuota-star-1" src="assets/images/web/decor/desktop/stars-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-cuota-star-2" src="assets/images/web/decor/desktop/stars-03.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-cuota-star-3" src="assets/images/web/decor/desktop/stars-04.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-cuota-star-4" src="assets/images/web/decor/desktop/stars-05.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    </section>
+
+    <section id="confirmar" class="section-surface rsvp-wrapper">
+      <div class="container">
+        <h2 class="font-display reveal-fade-up text-center">Confirmar Asistencia</h2>
+        <div class="section-divider reveal-fade-up"></div>
+        <p class="rsvp-intro reveal-fade-up text-center">
+          Nos encantará contar con su presencia en este día tan especial.<br>
+          Por favor confirme su asistencia completando el siguiente formulario.
+        </p>
+
+        <form id="rsvp-form" class="rsvp-form reveal-fade-up">
+          <!-- HONEYPOT -->
+          <div class="hidden-field" aria-hidden="true" style="display:none;">
+            <label for="honeypot">No llenar esto</label>
+            <input type="text" id="honeypot" name="honeypot" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" id="timestamp" name="timestamp" value="">
+
+          <!-- BÁSICOS -->
+          <fieldset class="rsvp-fieldset">
+            <div class="input-wrapper">
+              <label for="name" class="label-title">Nombre completo</label>
+              <input type="text" id="name" name="name" class="form-input" required placeholder="Ej. Cindy Chavarría">
+            </div>
+            <div class="input-row">
+              <div class="input-wrapper">
+                <label for="phone" class="label-title">Teléfono</label>
+                <input type="tel" id="phone" name="phone" class="form-input" required placeholder="Ej. 8888 8888">
+              </div>
+              <div class="input-wrapper">
+                <label for="email" class="label-title">Correo electrónico</label>
+                <input type="email" id="email" name="email" class="form-input" required placeholder="Ej. hola@correo.com">
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- ASISTENCIA -->
+          <fieldset class="rsvp-fieldset">
+            <label class="label-title text-center">¿Confirmas tu asistencia?</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="attendance" value="yes" required>
+                <span class="btn btn-outline btn-radio">Sí, asistiré</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="attendance" value="no" required>
+                <span class="btn btn-outline btn-radio">No podré asistir</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- CANTIDADES Y NOMBRES -->
+          <div id="rsvp-quantities" class="rsvp-details hidden">
+            <p class="label-title text-center">¿Quiénes asisten?</p>
+            
+            <div class="qty-section" data-cat="adults">
+              <div class="qty-header">
+                <div class="qty-info">
+                  <span class="font-display">Adultos</span>
+                  <span class="qty-price">₡14.000</span>
+                </div>
+                <div class="qty-controls">
+                  <button type="button" class="btn-qty btn-minus" aria-label="Restar adulto">-</button>
+                  <label for="qty-adults" class="sr-only">Cantidad de adultos</label>
+                  <input type="number" id="qty-adults" name="adults_count" class="qty-input" min="0" max="8" value="0" readonly>
+                  <button type="button" class="btn-qty btn-plus" aria-label="Sumar adulto">+</button>
+                </div>
+              </div>
+              <div id="names-adults" class="names-container"></div>
+            </div>
+
+            <div class="qty-section" data-cat="kids_older">
+              <div class="qty-header">
+                <div class="qty-info">
+                  <span class="font-display">Niños (Mayores de 10 años)</span>
+                  <span class="qty-price">₡14.000 <small>(Plato completo)</small></span>
+                </div>
+                <div class="qty-controls">
+                  <button type="button" class="btn-qty btn-minus" aria-label="Restar niño">-</button>
+                  <label for="qty-kids-older" class="sr-only">Cantidad de niños mayores</label>
+                  <input type="number" id="qty-kids-older" name="kids_older_count" class="qty-input" min="0" max="8" value="0" readonly>
+                  <button type="button" class="btn-qty btn-plus" aria-label="Sumar niño">+</button>
+                </div>
+              </div>
+              <div id="names-kids-older" class="names-container"></div>
+            </div>
+
+            <div class="qty-section" data-cat="kids_mid">
+              <div class="qty-header">
+                <div class="qty-info">
+                  <span class="font-display">Niños (5 a 10 años)</span>
+                  <span class="qty-price">₡7.000 <small>(Pagan 50%)</small></span>
+                </div>
+                <div class="qty-controls">
+                  <button type="button" class="btn-qty btn-minus" aria-label="Restar niño">-</button>
+                  <label for="qty-kids-mid" class="sr-only">Cantidad de niños 5 a 10</label>
+                  <input type="number" id="qty-kids-mid" name="kids_mid_count" class="qty-input" min="0" max="8" value="0" readonly>
+                  <button type="button" class="btn-qty btn-plus" aria-label="Sumar niño">+</button>
+                </div>
+              </div>
+              <div id="names-kids-mid" class="names-container"></div>
+            </div>
+
+            <div class="qty-section" data-cat="kids_young">
+              <div class="qty-header">
+                <div class="qty-info">
+                  <span class="font-display">Niños (Menores de 5)</span>
+                  <span class="qty-price">Sin costo</span>
+                </div>
+                <div class="qty-controls">
+                  <button type="button" class="btn-qty btn-minus" aria-label="Restar niño">-</button>
+                  <label for="qty-kids-young" class="sr-only">Cantidad de niños menores</label>
+                  <input type="number" id="qty-kids-young" name="kids_young_count" class="qty-input" min="0" max="8" value="0" readonly>
+                  <button type="button" class="btn-qty btn-plus" aria-label="Sumar niño">+</button>
+                </div>
+              </div>
+              <div id="names-kids-young" class="names-container"></div>
+            </div>
+
+            <div class="rsvp-total-bar">
+              <span class="total-label font-display">Cuota total:</span>
+              <span class="total-amount font-display" id="rsvp-total">₡0</span>
+              <input type="hidden" id="total-hidden" name="total" value="0">
+            </div>
+          </div>
+
+          <div class="rsvp-submit">
+            <button type="submit" id="btn-submit" class="btn btn-primary form-btn-block">
+              <span class="btn-text">Confirmar Asistencia</span>
+              <span class="btn-loader hidden"><svg class="spinner" viewBox="0 0 50 50"><circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg></span>
+            </button>
+            <p id="rsvp-status" class="rsvp-status hidden"></p>
+
+            <!-- BLOQUE IMPORTANTE PAGO (Visible via JS) -->
+            <div id="rsvp-payment-note" class="rsvp-payment-note hidden">
+              <h4 class="font-display">Importante</h4>
+              <p class="payment-note-text">Por favor envíanos el comprobante de pago correspondiente al monto total según la cantidad de personas que asistirán.</p>
+              <p class="whatsapp-prompt">Puedes enviarlo por WhatsApp a cualquiera de los siguientes contactos:</p>
+              <div class="payment-whatsapp-buttons">
+                <a href="https://wa.me/50688948734?text=Hola,%20ya%20complet%C3%A9%20el%20formulario%20del%20baby%20shower.%20Te%20env%C3%ADo%20el%20comprobante%20de%20pago." target="_blank" rel="noopener noreferrer" class="contacto-btn">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" fill="currentColor"><path d="M12.031 2.012A9.957 9.957 0 002.007 12a10.05 10.05 0 001.35 4.966L2 22l5.174-1.341A9.97 9.97 0 0012.031 22a9.965 9.965 0 009.962-10 9.965 9.965 0 00-9.962-9.988zm0 18.287c-1.558 0-3.093-.422-4.428-1.22l-.317-.188-3.295.854.873-3.18-.21-.334A8.254 8.254 0 013.714 12c0-4.576 3.738-8.3 8.318-8.3a8.217 8.217 0 018.27 8.288 8.25 8.25 0 01-8.27 8.311zm4.562-6.223c-.252-.125-1.488-.732-1.717-.816-.23-.083-.398-.125-.566.125-.168.25-.65 .816-.797.982-.147.166-.294.187-.546.062-1.123-.563-2.072-1.077-2.871-2.479-.084-.146.084-.125.325-.584.084-.167.042-.313-.021-.438-.063-.125-.566-1.354-.775-1.854-.204-.49-.413-.423-.566-.431h-.482c-.168 0-.441.063-.672.313-.23.25-.882.854-.882 2.083s.903 2.416 1.029 2.583c.125.167 1.777 2.75 4.306 3.833 1.5.646 2.096.71 2.846.594.514-.084 1.488-.604 1.698-1.188.21-.583.21-1.083.147-1.188-.062-.104-.23-.166-.482-.291z"/></svg>
+                  <span>Cindy Chavarría</span>
+                </a>
+                <a href="https://wa.me/50683417236?text=Hola,%20ya%20complet%C3%A9%20el%20formulario%20del%20baby%20shower.%20Te%20env%C3%ADo%20el%20comprobante%20de%20pago." target="_blank" rel="noopener noreferrer" class="contacto-btn">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" fill="currentColor"><path d="M12.031 2.012A9.957 9.957 0 002.007 12a10.05 10.05 0 001.35 4.966L2 22l5.174-1.341A9.97 9.97 0 0012.031 22a9.965 9.965 0 009.962-10 9.965 9.965 0 00-9.962-9.988zm0 18.287c-1.558 0-3.093-.422-4.428-1.22l-.317-.188-3.295.854.873-3.18-.21-.334A8.254 8.254 0 013.714 12c0-4.576 3.738-8.3 8.318-8.3a8.217 8.217 0 018.27 8.288 8.25 8.25 0 01-8.27 8.311zm4.562-6.223c-.252-.125-1.488-.732-1.717-.816-.23-.083-.398-.125-.566.125-.168.25-.65 .816-.797.982-.147.166-.294.187-.546.062-1.123-.563-2.072-1.077-2.871-2.479-.084-.146.084-.125.325-.584.084-.167.042-.313-.021-.438-.063-.125-.566-1.354-.775-1.854-.204-.49-.413-.423-.566-.431h-.482c-.168 0-.441.063-.672.313-.23.25-.882.854-.882 2.083s.903 2.416 1.029 2.583c.125.167 1.777 2.75 4.306 3.833 1.5.646 2.096.71 2.846.594.514-.084 1.488-.604 1.698-1.188.21-.583.21-1.083.147-1.188-.062-.104-.23-.166-.482-.291z"/></svg>
+                  <span>Minor Cortés</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Success state -->
+        <div id="rsvp-success" class="rsvp-success hidden">
+          <h3 class="font-display">¡Gracias por confirmar tu asistencia!</h3>
+          <p class="success-subtitle">Hemos recibido tu información correctamente.</p>
+          
+          <div class="success-payment-note">
+            <p>No olvides enviarnos el comprobante de pago por WhatsApp.</p>
+            <p style="font-weight: 500; color: var(--color-primary-dark);">Tu confirmación se completará una vez recibido el comprobante.</p>
+            <p class="whatsapp-prompt">Puedes hacerlo con cualquiera de nosotros:</p>
+            <div class="payment-whatsapp-buttons">
+              <a href="https://wa.me/50688948734?text=Hola,%20ya%20complet%C3%A9%20el%20formulario%20del%20baby%20shower.%20Te%20env%C3%ADo%20el%20comprobante%20de%20pago." target="_blank" rel="noopener noreferrer" class="contacto-btn">
+                <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" fill="currentColor"><path d="M12.031 2.012A9.957 9.957 0 002.007 12a10.05 10.05 0 001.35 4.966L2 22l5.174-1.341A9.97 9.97 0 0012.031 22a9.965 9.965 0 009.962-10 9.965 9.965 0 00-9.962-9.988zm0 18.287c-1.558 0-3.093-.422-4.428-1.22l-.317-.188-3.295.854.873-3.18-.21-.334A8.254 8.254 0 013.714 12c0-4.576 3.738-8.3 8.318-8.3a8.217 8.217 0 018.27 8.288 8.25 8.25 0 01-8.27 8.311zm4.562-6.223c-.252-.125-1.488-.732-1.717-.816-.23-.083-.398-.125-.566.125-.168.25-.65 .816-.797.982-.147.166-.294.187-.546.062-1.123-.563-2.072-1.077-2.871-2.479-.084-.146.084-.125.325-.584.084-.167.042-.313-.021-.438-.063-.125-.566-1.354-.775-1.854-.204-.49-.413-.423-.566-.431h-.482c-.168 0-.441.063-.672.313-.23.25-.882.854-.882 2.083s.903 2.416 1.029 2.583c.125.167 1.777 2.75 4.306 3.833 1.5.646 2.096.71 2.846.594.514-.084 1.488-.604 1.698-1.188.21-.583.21-1.083.147-1.188-.062-.104-.23-.166-.482-.291z"/></svg>
+                <span>Cindy Chavarría</span>
+              </a>
+              <a href="https://wa.me/50683417236?text=Hola,%20ya%20complet%C3%A9%20el%20formulario%20del%20baby%20shower.%20Te%20env%C3%ADo%20el%20comprobante%20de%20pago." target="_blank" rel="noopener noreferrer" class="contacto-btn">
+                <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" fill="currentColor"><path d="M12.031 2.012A9.957 9.957 0 002.007 12a10.05 10.05 0 001.35 4.966L2 22l5.174-1.341A9.97 9.97 0 0012.031 22a9.965 9.965 0 009.962-10 9.965 9.965 0 00-9.962-9.988zm0 18.287c-1.558 0-3.093-.422-4.428-1.22l-.317-.188-3.295.854.873-3.18-.21-.334A8.254 8.254 0 013.714 12c0-4.576 3.738-8.3 8.318-8.3a8.217 8.217 0 018.27 8.288 8.25 8.25 0 01-8.27 8.311zm4.562-6.223c-.252-.125-1.488-.732-1.717-.816-.23-.083-.398-.125-.566.125-.168.25-.65 .816-.797.982-.147.166-.294.187-.546.062-1.123-.563-2.072-1.077-2.871-2.479-.084-.146.084-.125.325-.584.084-.167.042-.313-.021-.438-.063-.125-.566-1.354-.775-1.854-.204-.49-.413-.423-.566-.431h-.482c-.168 0-.441.063-.672.313-.23.25-.882.854-.882 2.083s.903 2.416 1.029 2.583c.125.167 1.777 2.75 4.306 3.833 1.5.646 2.096.71 2.846.594.514-.084 1.488-.604 1.698-1.188.21-.583.21-1.083.147-1.188-.062-.104-.23-.166-.482-.291z"/></svg>
+                <span>Minor Cortés</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Sistema Decorativo Confirmar (Reforzado) -->
+      <img class="decor decor-cfm-nube-izq"
+           src="assets/images/web/decor/desktop/clouds-02.webp"
+           srcset="assets/images/web/decor/mobile/clouds-02.webp 300w,
+                   assets/images/web/decor/tablet/clouds-02.webp 500w,
+                   assets/images/web/decor/desktop/clouds-02.webp 800w"
+           sizes="(max-width: 479px) 120px, (max-width: 991px) 160px, 280px"
+           alt="" aria-hidden="true" loading="lazy" decoding="async">
+           
+      <img class="decor decor-cfm-nube-der"
+           src="assets/images/web/decor/desktop/clouds-05.webp"
+           srcset="assets/images/web/decor/mobile/clouds-05.webp 300w,
+                   assets/images/web/decor/tablet/clouds-05.webp 500w,
+                   assets/images/web/decor/desktop/clouds-05.webp 800w"
+           sizes="(max-width: 479px) 110px, (max-width: 991px) 130px, 200px"
+           alt="" aria-hidden="true" loading="lazy" decoding="async">
+
+      <img class="decor decor-cfm-nube-mid"
+           src="assets/images/web/decor/desktop/clouds-07.webp"
+           srcset="assets/images/web/decor/mobile/clouds-07.webp 300w,
+                   assets/images/web/decor/tablet/clouds-07.webp 500w,
+                   assets/images/web/decor/desktop/clouds-07.webp 800w"
+           sizes="(max-width: 479px) 100px, (max-width: 991px) 100px, 120px"
+           alt="" aria-hidden="true" loading="lazy" decoding="async">
+
+      <img class="decor decor-cfm-chupeta" src="assets/images/web/decor/desktop/chupeta-01.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+           
+      <img class="decor decor-cfm-star-1" src="assets/images/web/decor/desktop/stars-04.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-cfm-star-2" src="assets/images/web/decor/desktop/stars-05.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-cfm-star-3" src="assets/images/web/decor/desktop/stars-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-cfm-star-4" src="assets/images/web/decor/desktop/stars-03.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
     </section>
 
     <section id="regalos" class="section-default">
       <div class="container">
-        <h2 class="font-display reveal-fade-up">Regalos y Contribuciones</h2>
+        <h2 class="font-display reveal-fade-up text-center">Regalos</h2>
+        <div class="section-divider reveal-fade-up"></div>
+        <p class="regalos-intro reveal-fade-up text-center">
+          Si deseas tener un detalle con Daniel, hemos preparado algunas opciones que nos ayudarán a recibirlo con todo lo necesario.<br><br>
+          Agradecemos de corazón tu cariño y acompañamiento en este momento tan especial para nosotros.
+        </p>
+
+        <div class="regalos-grid">
+          <!-- Opción 1: Aporte -->
+          <div class="regalo-card reveal-fade-up">
+            <h3 class="font-display">Aporte en efectivo</h3>
+            <p class="regalo-card-desc">Los aportes en efectivo puedes hacerlos mediante SINPE o transferencia bancaria. Esto nos permitirá utilizarlo en lo que Daniel realmente necesite.</p>
+            
+            <div class="regalo-block">
+              <h4 class="regalo-subtitle">SINPE Móvil</h4>
+              <div class="regalo-data">
+                <strong>+506 8894 8734</strong>
+                <span>Cindy Chavarría</span>
+              </div>
+            </div>
+
+            <div class="regalo-block">
+              <h4 class="regalo-subtitle">Cuentas disponibles</h4>
+              
+              <div class="banco-list">
+                <div class="banco-item">
+                  <strong>BAC San José</strong>
+                  <span>Cuenta Corriente: 911102408</span>
+                  <span>IBAN: CR92010200009111024081</span>
+                </div>
+                <div class="banco-item">
+                  <strong>BCR</strong>
+                  <span>Cuenta: 001-1861225-3</span>
+                  <span>IBAN: CR09015202001186122534</span>
+                </div>
+                <div class="banco-item">
+                  <strong>Banco Nacional</strong>
+                  <span>Cuenta: 200-01-154-015091-1</span>
+                  <span>IBAN: CR49015115420010150911</span>
+                </div>
+                <div class="banco-item">
+                  <strong>Scotiabank</strong>
+                  <span>Cuenta de ahorro: 3001421118</span>
+                  <span>IBAN: CR29012300030014211180</span>
+                </div>
+              </div>
+              
+              <div class="regalo-nota">
+                <p><strong>A nombre de Minor Alberto Cortés Chinchilla</strong><br>
+                Cédula: 4-0175-0389</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opción 2: Lista -->
+          <div class="regalo-card reveal-fade-up" style="transition-delay: 100ms;">
+            <div class="regalo-bebemundo-logo">
+              <img src="assets/images/web/logo/logo_bebe_mundo.webp" alt="Bebemundo Logo" loading="lazy" decoding="async">
+            </div>
+            <h3 class="font-display">Lista de regalos</h3>
+            <p class="regalo-card-desc">También hemos creado una lista de regalos en Bebemundo con artículos que hemos seleccionado especialmente para Daniel.</p>
+            
+            <a href="https://www.bebemundo.co.cr/giftlist/details/966112" target="_blank" rel="noopener noreferrer" class="regalos-btn regalos-btn--primary">Ver lista en línea</a>
+            
+            <div class="regalo-sucursales">
+              <h4 class="regalo-store-title">Si prefieres visitar una tienda</h4>
+              
+              <div class="sucursal-item">
+                <div class="sucursal-header">
+                  <span class="sucursal-name">Escazú</span>
+                  <a href="https://waze.com/ul?q=bebemundo%20escazu" target="_blank" rel="noopener noreferrer" class="sucursal-waze">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    Waze
+                  </a>
+                </div>
+                <p class="sucursal-info">Guachipelín<br>L-D 10am-8pm • 4031-8120 / 6420-7288</p>
+              </div>
+
+              <div class="sucursal-item">
+                <div class="sucursal-header">
+                  <span class="sucursal-name">Granadilla</span>
+                  <a href="https://waze.com/ul?q=bebemundo%20granadilla" target="_blank" rel="noopener noreferrer" class="sucursal-waze">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    Waze
+                  </a>
+                </div>
+                <p class="sucursal-info">Curridabat<br>L-D 10am-7pm • 4031-8170 / 6487-1910</p>
+              </div>
+
+              <div class="sucursal-item">
+                <div class="sucursal-header">
+                  <span class="sucursal-name">Rohrmoser</span>
+                  <a href="https://waze.com/ul?q=bebemundo%20rohrmoser" target="_blank" rel="noopener noreferrer" class="sucursal-waze">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    Waze
+                  </a>
+                </div>
+                <p class="sucursal-info">Sabana Oeste<br>L-D 10am-7pm • 4031-8077 / 6093-2960</p>
+              </div>
+            </div>
+
+            <div class="regalo-store-box">
+              <h4 class="regalo-store-title">Información del contrato</h4>
+              <ul>
+                <li><strong>Número de lista:</strong> 966112</li>
+                <li><strong>Participantes:</strong> Cindy Chavarría Soto<br>y Minor Alberto Cortés Chinchilla</li>
+                <li><strong>Contrato:</strong> Daniel Cortés Chavarría</li>
+              </ul>
+              <a href="images/966112_Lista_de_regalos.pdf" target="_blank" rel="noopener noreferrer" class="regalos-btn regalos-btn--secondary" style="margin-top: 1.5rem;">Ver lista en PDF</a>
+            </div>
+
+            <div class="regalo-disclaimer">
+              <p>
+                <strong>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  Nota importante:
+                </strong><br>
+                La lista en línea no siempre muestra el inventario completo y algunos productos pueden ser exclusivos de tienda física. Además, la lista en PDF no se actualiza en tiempo real, por lo que recomendamos confirmar la disponibilidad directamente en sucursal.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contacto-block reveal-fade-up">
+          <h3 class="font-display">¿Necesitas ayuda?</h3>
+          <p>Si tienes alguna duda o consulta, o necesitas más información, puedes contactarnos.</p>
+          <div class="contacto-links">
+            <a href="https://wa.me/50688948734" target="_blank" rel="noopener noreferrer" class="contacto-btn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="currentColor"><path d="M12.031 2.012A9.957 9.957 0 002.007 12a10.05 10.05 0 001.35 4.966L2 22l5.174-1.341A9.97 9.97 0 0012.031 22a9.965 9.965 0 009.962-10 9.965 9.965 0 00-9.962-9.988zm0 18.287c-1.558 0-3.093-.422-4.428-1.22l-.317-.188-3.295.854.873-3.18-.21-.334A8.254 8.254 0 013.714 12c0-4.576 3.738-8.3 8.318-8.3a8.217 8.217 0 018.27 8.288 8.25 8.25 0 01-8.27 8.311zm4.562-6.223c-.252-.125-1.488-.732-1.717-.816-.23-.083-.398-.125-.566.125-.168.25-.65 .816-.797.982-.147.166-.294.187-.546.062-1.123-.563-2.072-1.077-2.871-2.479-.084-.146.084-.125.325-.584.084-.167.042-.313-.021-.438-.063-.125-.566-1.354-.775-1.854-.204-.49-.413-.423-.566-.431h-.482c-.168 0-.441.063-.672.313-.23.25-.882.854-.882 2.083s.903 2.416 1.029 2.583c.125.167 1.777 2.75 4.306 3.833 1.5.646 2.096.71 2.846.594.514-.084 1.488-.604 1.698-1.188.21-.583.21-1.083.147-1.188-.062-.104-.23-.166-.482-.291z"/></svg>
+              <span>Cindy Chavarría</span>
+            </a>
+            <a href="https://wa.me/50683417236" target="_blank" rel="noopener noreferrer" class="contacto-btn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="currentColor"><path d="M12.031 2.012A9.957 9.957 0 002.007 12a10.05 10.05 0 001.35 4.966L2 22l5.174-1.341A9.97 9.97 0 0012.031 22a9.965 9.965 0 009.962-10 9.965 9.965 0 00-9.962-9.988zm0 18.287c-1.558 0-3.093-.422-4.428-1.22l-.317-.188-3.295.854.873-3.18-.21-.334A8.254 8.254 0 013.714 12c0-4.576 3.738-8.3 8.318-8.3a8.217 8.217 0 018.27 8.288 8.25 8.25 0 01-8.27 8.311zm4.562-6.223c-.252-.125-1.488-.732-1.717-.816-.23-.083-.398-.125-.566.125-.168.25-.65 .816-.797.982-.147.166-.294.187-.546.062-1.123-.563-2.072-1.077-2.871-2.479-.084-.146.084-.125.325-.584.084-.167.042-.313-.021-.438-.063-.125-.566-1.354-.775-1.854-.204-.49-.413-.423-.566-.431h-.482c-.168 0-.441.063-.672.313-.23.25-.882.854-.882 2.083s.903 2.416 1.029 2.583c.125.167 1.777 2.75 4.306 3.833 1.5.646 2.096.71 2.846.594.514-.084 1.488-.604 1.698-1.188.21-.583.21-1.083.147-1.188-.062-.104-.23-.166-.482-.291z"/></svg>
+              <span>Minor Cortés</span>
+            </a>
+          </div>
+        </div>
       </div>
-      <!-- Motivo decorativo: nubes acuarela -->
-      <img class="decor decor--regalos-clouds reveal-fade"
-           src="assets/images/web/mobile/clouds-02.webp"
-           srcset="assets/images/web/mobile/clouds-02.webp 256w,
-                   assets/images/web/tablet/clouds-02.webp 384w,
-                   assets/images/web/desktop/clouds-02.webp 512w"
-           sizes="(max-width: 767px) 100px,
-                  (max-width: 1279px) 140px,
-                  180px"
-           alt="" aria-hidden="true"
-           width="256" height="256"
-           loading="lazy" decoding="async">
-      <!-- Estrellas decorativas -->
-      <svg class="star star--sm star--reg-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
-      <svg class="star star--xs star--reg-2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
+      <!-- Sistema Decorativo Regalos (Ultra Reforzado) -->
+      <img class="decor decor-reg-nube-izq"
+           src="assets/images/web/decor/desktop/clouds-07.webp"
+           srcset="assets/images/web/decor/mobile/clouds-07.webp 300w,
+                   assets/images/web/decor/tablet/clouds-07.webp 500w,
+                   assets/images/web/decor/desktop/clouds-07.webp 800w"
+           sizes="(max-width: 479px) 130px, (max-width: 991px) 180px, 320px"
+           alt="" aria-hidden="true" loading="lazy" decoding="async">
+           
+      <img class="decor decor-reg-nube-der"
+           src="assets/images/web/decor/desktop/clouds-04.webp"
+           srcset="assets/images/web/decor/mobile/clouds-04.webp 300w,
+                   assets/images/web/decor/tablet/clouds-04.webp 500w,
+                   assets/images/web/decor/desktop/clouds-04.webp 800w"
+           sizes="(max-width: 479px) 120px, (max-width: 991px) 130px, 220px"
+           alt="" aria-hidden="true" loading="lazy" decoding="async">
+
+      <img class="decor decor-reg-nube-mid-der"
+           src="assets/images/web/decor/desktop/clouds-05.webp"
+           srcset="assets/images/web/decor/mobile/clouds-05.webp 300w,
+                   assets/images/web/decor/tablet/clouds-05.webp 500w,
+                   assets/images/web/decor/desktop/clouds-05.webp 800w"
+           sizes="(max-width: 479px) 90px, (max-width: 991px) 120px, 180px"
+           alt="" aria-hidden="true" loading="lazy" decoding="async">
+
+      <img class="decor decor-reg-nube-mid-izq"
+           src="assets/images/web/decor/desktop/clouds-02.webp"
+           srcset="assets/images/web/decor/mobile/clouds-02.webp 300w,
+                   assets/images/web/decor/tablet/clouds-02.webp 500w,
+                   assets/images/web/decor/desktop/clouds-02.webp 800w"
+           sizes="(max-width: 479px) 100px, (max-width: 991px) 140px, 210px"
+           alt="" aria-hidden="true" loading="lazy" decoding="async">
+
+      <img class="decor decor-reg-chupeta-1" src="assets/images/web/decor/desktop/chupeta-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-reg-chupeta-2" src="assets/images/web/decor/desktop/chupeta-01.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+
+      <img class="decor decor-reg-star-1" src="assets/images/web/decor/desktop/stars-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-reg-star-2" src="assets/images/web/decor/desktop/stars-03.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-reg-star-3" src="assets/images/web/decor/desktop/stars-04.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-reg-star-4" src="assets/images/web/decor/desktop/stars-05.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-reg-star-5" src="assets/images/web/decor/desktop/stars-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-reg-star-6" src="assets/images/web/decor/desktop/stars-03.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
     </section>
 
     <section id="cierre" class="section-footer">
@@ -346,30 +948,116 @@
                       280px"
                alt=""
                width="256" height="256"
-               loading="lazy" decoding="async">
+               loading="lazy" decoding="async"
+               class="anim-cierre-oso">
         </div>
       </div>
-      <!-- Motivos decorativos: nubes -->
-      <img class="decor decor--cierre-clouds"
-           src="assets/images/web/mobile/clouds-02.webp"
-           srcset="assets/images/web/mobile/clouds-02.webp 256w,
-                   assets/images/web/tablet/clouds-02.webp 384w,
-                   assets/images/web/desktop/clouds-02.webp 512w"
-           sizes="(max-width: 767px) 120px,
-                  (max-width: 1279px) 160px,
-                  200px"
-           alt="" aria-hidden="true"
-           width="256" height="256"
-           loading="lazy" decoding="async">
-      <!-- Estrellas decorativas -->
-      <svg class="star star--xs star--fin-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
-      <svg class="star star--sm star--fin-2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6 4.8 2.4-7.2-6-4.8h7.6z" fill="currentColor"/></svg>
+      <!-- Sistema Decorativo Cierre (Reforzado y Animado) -->
+      
+      <!-- NUBES CRUZADAS (Cielo Vivo) -->
+      <!-- Capa fondo lejano -->
+      <img class="decor anim-cruzada-l2r decor-fin-nube-cruzada-1" style="animation-delay: -45s;" src="assets/images/web/decor/desktop/clouds-04.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor anim-cruzada-r2l-lenta decor-fin-nube-cruzada-2" style="animation-delay: -10s;" src="assets/images/web/decor/desktop/clouds-07.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor anim-cruzada-l2r-super-lenta decor-fin-nube-cruzada-5" style="animation-delay: -100s;" src="assets/images/web/decor/desktop/clouds-05.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      
+      <!-- Capa media/cercana -->
+      <img class="decor anim-cruzada-l2r-rapida decor-fin-nube-cruzada-3" style="animation-delay: -2s;" src="assets/images/web/decor/desktop/clouds-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor anim-cruzada-r2l decor-fin-nube-cruzada-4" style="animation-delay: -38s;" src="assets/images/web/decor/desktop/clouds-03.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor anim-cruzada-r2l-media decor-fin-nube-cruzada-6" style="animation-delay: -15s;" src="assets/images/web/decor/desktop/clouds-07.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor anim-cruzada-l2r-hiper-lenta decor-fin-nube-cruzada-7" style="animation-delay: -80s;" src="assets/images/web/decor/desktop/clouds-04.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      
+      <!-- Capa cruzadas dinámicas ultra lejanas/cercanas (Enriquecimiento Masivo) -->
+      <img class="decor anim-cruzada-r2l-lenta decor-fin-nube-cruzada-8" style="animation-delay: -65s;" src="assets/images/web/decor/desktop/clouds-05.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor anim-cruzada-l2r-super-lenta decor-fin-nube-cruzada-9" style="animation-delay: -30s;" src="assets/images/web/decor/desktop/clouds-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor anim-cruzada-r2l-rapida decor-fin-nube-cruzada-10" style="animation-delay: -22s;" src="assets/images/web/decor/desktop/clouds-03.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor anim-cruzada-l2r-rapida decor-fin-nube-cruzada-11" style="animation-delay: -18s;" src="assets/images/web/decor/desktop/clouds-04.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      
+      <!-- AVION ANIMADO -->
+      <div class="avion-wrapper decor" aria-hidden="true">
+        <div class="avion-flight-path">
+          <div class="avion-bobbing">
+            <picture>
+              <source media="(min-width: 768px)" srcset="assets/images/web/decor/desktop/oso_avion_800.webp">
+              <img src="assets/images/web/decor/mobile/oso_avion_400.webp" alt="" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </div>
+      </div>
+
+      <!-- NUBES: Flotación Regional Base -->
+      <img class="decor decor-fin-nube-izq anim-cierre-nube-h"
+           src="assets/images/web/decor/desktop/clouds-05.webp"
+           srcset="assets/images/web/decor/mobile/clouds-05.webp 300w,
+                   assets/images/web/decor/tablet/clouds-05.webp 500w,
+                   assets/images/web/decor/desktop/clouds-05.webp 800w"
+           sizes="(max-width: 479px) 130px, (max-width: 991px) 140px, 240px"
+           alt="" aria-hidden="true" loading="lazy" decoding="async">
+           
+      <img class="decor decor-fin-nube-der anim-cierre-nube-v"
+           src="assets/images/web/decor/desktop/clouds-02.webp"
+           srcset="assets/images/web/decor/mobile/clouds-02.webp 300w,
+                   assets/images/web/decor/tablet/clouds-02.webp 500w,
+                   assets/images/web/decor/desktop/clouds-02.webp 800w"
+           sizes="(max-width: 479px) 120px, (max-width: 991px) 130px, 220px"
+           alt="" aria-hidden="true" loading="lazy" decoding="async">
+
+      <img class="decor decor-fin-nube-extra-1 anim-cierre-nube-h-delay" src="assets/images/web/decor/desktop/clouds-03.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-nube-extra-2 decor-fija" src="assets/images/web/decor/desktop/clouds-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-nube-extra-3 anim-cierre-nube-v-delay" src="assets/images/web/decor/desktop/clouds-05.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-nube-extra-4 anim-cierre-nube-h" src="assets/images/web/decor/desktop/clouds-04.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-nube-extra-5 anim-cierre-nube-v-delay" src="assets/images/web/decor/desktop/clouds-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-nube-extra-6 anim-cierre-nube-h-delay" src="assets/images/web/decor/desktop/clouds-07.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-nube-extra-7 anim-cierre-nube-v" src="assets/images/web/decor/desktop/clouds-03.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <!-- CHUPETAS: Péndulos duales -->
+      <img class="decor decor-fin-chupeta anim-cierre-chupeta" src="assets/images/web/decor/desktop/chupeta-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-chupeta-2 anim-cierre-chupeta-inversa" src="assets/images/web/decor/desktop/chupeta-01.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+           
+      <!-- ESTRELLAS: Fijas, twinkle y breathe -->
+      <img class="decor decor-fin-star-1 anim-cierre-twinkle" src="assets/images/web/decor/desktop/stars-04.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-2 anim-cierre-breathe" src="assets/images/web/decor/desktop/stars-05.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-3 decor-fija" src="assets/images/web/decor/desktop/stars-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-4 anim-cierre-twinkle-delay" src="assets/images/web/decor/desktop/stars-03.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-5 anim-cierre-breathe-delay" src="assets/images/web/decor/desktop/stars-03.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      
+      <!-- ESTRELLAS EXTERNAS (Enriquecimiento) -->
+      <img class="decor decor-fin-star-6 anim-cierre-twinkle" src="assets/images/web/decor/desktop/stars-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-7 anim-cierre-breathe-delay" src="assets/images/web/decor/desktop/stars-03.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-8 anim-cierre-twinkle-delay" src="assets/images/web/decor/desktop/stars-04.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-9 decor-fija" src="assets/images/web/decor/desktop/stars-05.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-10 anim-cierre-breathe" src="assets/images/web/decor/desktop/stars-04.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-11 anim-cierre-twinkle" src="assets/images/web/decor/desktop/stars-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      
+      <!-- ESTRELLAS ADICIONALES (Destellos Masivos) -->
+      <img class="decor decor-fin-star-12 anim-cierre-twinkle-rapido" src="assets/images/web/decor/desktop/stars-03.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-13 anim-cierre-breathe-rapido" src="assets/images/web/decor/desktop/stars-05.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-14 anim-cierre-twinkle-lento" src="assets/images/web/decor/desktop/stars-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-15 anim-cierre-twinkle-rapido" src="assets/images/web/decor/desktop/stars-04.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-16 anim-cierre-breathe-lento" src="assets/images/web/decor/desktop/stars-02.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-17 anim-cierre-breathe-rapido" src="assets/images/web/decor/desktop/stars-03.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="decor decor-fin-star-18 anim-cierre-twinkle-lento" src="assets/images/web/decor/desktop/stars-05.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
     </section>
   </main>
+  
+  <footer class="site-footer reveal-fade-up">
+    <div class="container footer-container">
+      <div class="footer-divider" aria-hidden="true"></div>
+      <div class="footer-content">
+        <p class="footer-primary">
+          &copy; <span id="current-year"></span>
+          <a href="https://www.minorcortes.com" target="_blank" rel="noopener noreferrer" class="footer-link">Minor Cortés Chinchilla</a>. Todos los derechos reservados.
+        </p>
+        <p class="footer-secondary">Diseñado y desarrollado con detalle</p>
+      </div>
+    </div>
+  </footer>
 
   <!-- Back to Top Button -->
-  <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">↑</button>
+  <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="back-to-top-icon"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    <span class="back-to-top-text">Volver arriba</span>
+  </button>
 
-  <script src="js/main.js"></script>
+  <script src="js/rsvp.min.js"></script>
+  <script src="js/main.min.js"></script>
 </body>
 </html>

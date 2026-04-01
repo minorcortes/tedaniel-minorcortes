@@ -12,8 +12,9 @@ Single-page interactive baby shower landing page
 - This landing page is strictly personal — only accessible via direct link.
 - Must include `<meta name="robots" content="noindex, nofollow, noarchive, noimageindex, nosnippet">`.
 - Must include a strict `robots.txt` blocking all crawlers (`Disallow: /`).
-- Do NOT add SEO metadata designed for ranking or discovery (no meta description, no Open Graph, no schema.org).
-- This page must NEVER appear in Google or any other search engine index.
+- ✅ Open Graph IS allowed strictly for link preview generation (WhatsApp, iMessage, email, social sharing previews).
+- ❌ Open Graph must NOT be used for SEO or discoverability.
+- The site must remain fully non-indexable and must NEVER appear in Google or any other search engine index.
 
 ### Architecture
 - Single landing page only — NO multi-page architecture
@@ -54,8 +55,14 @@ Single-page interactive baby shower landing page
 tedaniel.minorcortes.com/
 ├── robots.txt              ← blocks all crawlers
 ├── index.html
-├── css/styles.css
-├── js/main.js
+├── css/
+│   ├── styles.css          ← source styles (mobile-first)
+│   └── styles.min.css      ← minified production styles
+├── js/
+│   ├── main.js             ← source slider/logic
+│   ├── main.min.js         ← minified production logic
+│   ├── rsvp.js             ← source form/rsvp logic
+│   └── rsvp.min.js         ← minified production rsvp
 ├── assets/
 │   ├── images/
 │   │   └── web/            ← WebP producción (mobile/tablet/desktop/bg)
@@ -71,12 +78,19 @@ tedaniel.minorcortes.com/
 ## Implemented Features
 
 ### Photo Slider — Sección "Nosotros"
-- **16 photos** (slide-00.jpg to slide-15.jpg) in `assets/images/web/nosotros/`
+- **16 photos** (slide-00.webp to slide-15.webp) in `assets/images/web/nosotros/`
 - **Crossfade** (1.2s opacity transition) + **Ken Burns** (6.2s transform zoom 1→1.04)
 - **IntersectionObserver** autoplay: starts when section is 30% visible, pauses when off-screen
 - **State persistence**: resumes from current slide and remaining time, never resets
 - **Accessibility**: respects `prefers-reduced-motion` (static first photo, no animation)
-- **Implementation**: Vanilla CSS transitions + Vanilla JS (~50 lines in `main.js`)
+- **Implementation**: Vanilla CSS transitions + Vanilla JS (~50 lines in `main.js` / run via `main.min.js`)
+
+### Performance & Asset Optimization (2026-04-01)
+- Complete refactoring of image payload, reducing total transfer weight by ~49% (~8.3 MB → ~4.2 MB).
+- 16 JPG slides converted to WebP (70% reduction).
+- Hardcoded `/images/` assets migrated to `/assets/images/web/` and resized.
+- CSS/JS minified and referenced properly.
+- Animated hero bear confirmed as an exception: permitted to be heavier (up to 1MB desktop) to preserve smooth 76-frame playback.
 
 ## Lessons Learned
 
@@ -84,4 +98,9 @@ tedaniel.minorcortes.com/
 - **Problem**: Using `animation: ken-burns 6.2s forwards` causes a visible "snap-back" when the `--active` class is removed (transform instantly resets to scale(1)).
 - **Solution**: Use `transition: transform 6.2s ease-in-out` on the base class + `transform: scale(1.04)` on the active class. The de-zoom happens through the same transition and is invisible because opacity drops to 0 in only 1.2s.
 - **Rule**: For effects toggled by class addition/removal, always use CSS `transition`. Reserve `@keyframes` for continuous/infinite loops only.
+
+### Visual Regressions in Asset Optimization
+- **Incident**: Aggressive optimization of `bear-animated.webp` (76 → 25 frames) caused a severe visual regression (choppy animation, altered scale, degraded hero experience).
+- **Resolution**: Restored original version via Git. Asset marked as "crítico no degradable".
+- **Rule**: Optimizing without visual context can break UX. Not everything must be compressed overzealously. Animations require special treatment. Git is a mandatory safety net for graphic assets. Visual validation is strictly mandatory in frontend tasks.
 
