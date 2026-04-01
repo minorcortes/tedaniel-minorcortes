@@ -40,38 +40,60 @@ Single-page interactive baby shower landing page
 | Desktop | 1280px |
 
 ### Infrastructure
-- GitHub repository: minorcortes/tedaniel-minorcortes
-- FTP deployment to SiteGround (tedaniel.minorcortes.com/public_html/)
-- Deploy only when explicitly requested
+- **Source of truth**: GitHub (https://github.com/minorcortes/tedaniel-minorcortes)
+- **Deploy**: GitHub Actions (push to `main` → FTP to SiteGround)
+- **Fallback deploy**: `deploy.sh` (manual FTP, local only)
+- **Deploy docs**: See `docs/DEPLOY_WORKFLOW.md`
+- **Production URL**: https://tedaniel.minorcortes.com/
+- **Asset pipeline**: All production assets must live in `assets/images/web/`
+- **Credentials**: GitHub Secrets (never in code). Local `.ftp-credentials` for manual fallback.
 
 ### Technology Stack
 - HTML5 (semantic)
 - Vanilla CSS (mobile-first)
 - Vanilla JavaScript (no frameworks unless explicitly approved)
 - No build tools required
+- CSS minified via `clean-css-cli`
+- JS minified via `terser`
 
 ## File Structure
 ```
 tedaniel.minorcortes.com/
-├── robots.txt              ← blocks all crawlers
+├── robots.txt               ← blocks all crawlers
 ├── index.html
 ├── css/
-│   ├── styles.css          ← source styles (mobile-first)
-│   └── styles.min.css      ← minified production styles
+│   ├── styles.css           ← source styles (mobile-first)
+│   └── styles.min.css       ← minified production styles
 ├── js/
-│   ├── main.js             ← source slider/logic
-│   ├── main.min.js         ← minified production logic
-│   ├── rsvp.js             ← source form/rsvp logic
-│   └── rsvp.min.js         ← minified production rsvp
+│   ├── main.js              ← source slider/logic
+│   ├── main.min.js          ← minified production logic
+│   ├── rsvp.js              ← source form/rsvp logic
+│   └── rsvp.min.js          ← minified production rsvp
 ├── assets/
-│   ├── images/
-│   │   └── web/            ← WebP producción (mobile/tablet/desktop/bg)
-│   └── videos/
-├── images/                  ← Master PNGs (gitignored, no deploy)
+│   └── images/
+│       └── web/
+│           ├── hero/        ← Hero parallax layers
+│           ├── mobile/      ← Responsive assets (mobile)
+│           ├── tablet/      ← Responsive assets (tablet)
+│           ├── desktop/     ← Responsive assets (desktop)
+│           ├── decor/       ← Decorative elements (3 breakpoints)
+│           ├── daniel/      ← Daniel section (video, overlays)
+│           ├── bg/          ← Section backgrounds
+│           ├── nosotros/    ← Photo slider (16 WebP slides)
+│           ├── logo/        ← Site logos
+│           ├── favicon/     ← Favicons & app icons
+│           └── seccion_dani/ ← Birth countdown background
+├── backend/
+│   └── APPS_SCRIPT.js       ← Google Apps Script (RSVP form)
+├── images/                   ← Master PNGs (gitignored, never deployed)
 ├── docs/
-│   ├── PROJECT_CONTEXT.md   ← this file
-│   └── AGENT_RULES.md       ← agent workflow rules
-├── deploy.sh                 ← FTP deploy (git-ignored)
+│   ├── PROJECT_CONTEXT.md    ← this file
+│   ├── AGENT_RULES.md        ← agent workflow rules
+│   └── DEPLOY_WORKFLOW.md    ← deploy pipeline & rules
+├── .github/
+│   └── workflows/
+│       └── deploy.yml        ← GitHub Actions CI/CD
+├── deploy.sh                 ← Manual FTP fallback (git-ignored)
 └── .ftp-credentials          ← FTP creds (git-ignored)
 ```
 

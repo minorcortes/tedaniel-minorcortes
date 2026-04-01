@@ -33,12 +33,14 @@
 ## Workflow
 
 1. Read PROJECT_CONTEXT.md before any work
-2. Check if a skill applies to the current task
-3. Propose changes as diff
-4. Apply only after approval
-5. Test responsiveness using Puppeteer (see Rule 11 below)
-6. Commit with descriptive messages
-7. Push to GitHub
+2. Read DEPLOY_WORKFLOW.md if task involves deploy or assets
+3. Check if a skill applies to the current task
+4. Propose changes as diff
+5. Apply only after approval
+6. Test responsiveness using Puppeteer (see Rule 11 below)
+7. Regenerate minified CSS/JS if source was modified
+8. Commit with descriptive messages
+9. Push to GitHub (triggers automatic deploy)
 
 ---
 
@@ -133,3 +135,46 @@ When an element is a flex child, `flex-basis` takes priority over `width`.
 - **Infinite loops:** Use `@keyframes`
 - Mixing both on the same property causes snap-back bugs
 
+---
+
+## Rule 13 — Deploy Workflow (MANDATORY)
+
+> **Established 2026-04-01 after FTP deploy incident.**
+
+### Source of Truth
+- **GitHub** is the single source of truth for this project.
+- All changes must be committed and pushed before deployment.
+
+### Deploy Flow
+```
+git push origin main → GitHub Actions → FTP → Production
+```
+
+### Rules
+1. **Never attempt direct FTP deploy** without using the official script or GitHub Actions.
+2. **Never use `mirror --delete` without explicit exclusions** — this can destroy server files.
+3. **GitHub Actions** is the primary deploy mechanism. Manual `deploy.sh` is fallback only.
+4. **Deploy docs**: See `docs/DEPLOY_WORKFLOW.md` for full reference.
+
+---
+
+## Rule 14 — Asset Pipeline (MANDATORY)
+
+> **Established 2026-04-01 after legacy asset incident.**
+
+### ALL production assets MUST live in:
+```
+assets/images/web/
+```
+
+### Prohibited:
+- ❌ `images/seccion_dani/` or any path outside `assets/`
+- ❌ Putting new assets in root or `images/`
+- ❌ Referencing `../images/` in CSS (must be `../assets/images/web/`)
+- ❌ Absolute URLs for local assets
+
+### When adding new assets:
+1. Place in the correct subdirectory under `assets/images/web/`
+2. Provide mobile/tablet/desktop variants if applicable
+3. Use WebP format (unless PNG required for transparency quality)
+4. Reference with relative paths from CSS (`../assets/images/web/...`)
