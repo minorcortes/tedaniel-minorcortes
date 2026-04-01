@@ -162,18 +162,39 @@ git push origin main → GitHub Actions → FTP → Production
 
 > **Established 2026-04-01 after legacy asset incident.**
 
+### Two folders, two distinct roles:
+
+| Folder | Role |
+|---|---|
+| `images/` | **Internal library** — masters, hi-res, work files. Never deployed, never migrated wholesale. |
+| `assets/images/web/` | **Production pipeline** — what the public site consumes. Always deployed. |
+
 ### ALL production assets MUST live in:
 ```
 assets/images/web/
 ```
 
+### `images/` is a permanent internal library:
+- It is NOT a staging area for bulk migration
+- It does NOT get copied wholesale to `assets/`
+- The system must **never assume** that files in `images/` need to be promoted
+- Assets are promoted **only when the user explicitly instructs it**
+
+### Promotion workflow (user-driven):
+1. User identifies a file in `images/` to promote
+2. User instructs the system to copy it to the pipeline
+3. System copies to `assets/images/web/[subdir]/` (optimizing if applicable)
+4. System updates CSS/HTML references
+5. Commit + push triggers automatic deploy
+
 ### Prohibited:
-- ❌ `images/seccion_dani/` or any path outside `assets/`
-- ❌ Putting new assets in root or `images/`
-- ❌ Referencing `../images/` in CSS (must be `../assets/images/web/`)
+- ❌ Referencing `images/` from CSS/HTML (only `assets/images/web/`)
+- ❌ Copying `images/` wholesale to the pipeline
+- ❌ Assuming files in `images/` should be migrated without user instruction
+- ❌ Putting production assets outside of `assets/images/web/`
 - ❌ Absolute URLs for local assets
 
-### When adding new assets:
+### When adding new assets to the pipeline:
 1. Place in the correct subdirectory under `assets/images/web/`
 2. Provide mobile/tablet/desktop variants if applicable
 3. Use WebP format (unless PNG required for transparency quality)

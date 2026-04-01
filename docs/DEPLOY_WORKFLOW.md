@@ -81,7 +81,43 @@ Requiere:
 ### Regla principal
 **TODOS los assets de producción deben vivir dentro de `assets/images/web/`.**
 
-### Estructura oficial
+### Dos carpetas, dos roles distintos
+
+| Carpeta | Rol | Desplegable | En Git |
+|---|---|---|---|
+| `images/` | **Biblioteca interna** — masters, alta resolución, archivos de trabajo | ❌ Nunca | ❌ Gitignored |
+| `assets/images/web/` | **Pipeline de producción** — lo que consume el sitio público | ✅ Siempre | ✅ Versionado |
+
+### `images/` — Biblioteca interna (NO tocar sin instrucción)
+
+La carpeta `images/` es una **biblioteca local permanente**:
+- Contiene masters de alta resolución, fotos originales, PNGs de trabajo
+- **NO se borra**, **NO se mueve**, **NO se deploya**, **NO se sincroniza**
+- **NO se migra completa** al pipeline oficial
+- Está gitignored — nunca llega a GitHub ni a producción
+- El sistema **NO debe asumir** que su contenido necesita ser copiado a `assets/`
+
+### `assets/images/web/` — Pipeline oficial de producción
+
+Todo lo que el sitio público consume viene de aquí:
+- Optimizado para web (WebP, tamaños correctos por breakpoint)
+- Referenciado en CSS/HTML
+- Versionado en Git
+- Desplegado automáticamente vía GitHub Actions
+
+### Flujo de promoción de assets (selectivo y guiado por el usuario)
+
+```
+1. Usuario indica: "hay un archivo nuevo en images/X/Y.png"
+2. Usuario instruye: "copiarlo al pipeline oficial"
+3. Sistema copia a assets/images/web/[subdir]/Y.webp (optimizando si aplica)
+4. Sistema actualiza referencias en CSS/HTML
+5. Commit + push activa deploy automático
+```
+
+> **REGLA CRÍTICA**: El sistema debe **esperar instrucción explícita del usuario** antes de promover cualquier asset de `images/` a `assets/images/web/`. Nunca asumir migración automática.
+
+### Estructura oficial de producción
 
 ```
 assets/
@@ -101,10 +137,11 @@ assets/
 ```
 
 ### Prohibido
-- NO usar rutas fuera de `assets/` (ej: `images/seccion_dani/`)
-- NO poner assets en el root del proyecto
-- NO referenciar rutas absolutas en CSS/HTML
-- NO subir masters/originales a producción (viven en `/images/` local)
+- NO referenciar `images/` desde CSS/HTML (solo `assets/images/web/`)
+- NO copiar `images/` completa al pipeline
+- NO asumir que archivos en `images/` deben migrarse sin instrucción del usuario
+- NO poner assets de producción fuera de `assets/images/web/`
+- NO usar rutas absolutas en CSS/HTML
 
 ---
 

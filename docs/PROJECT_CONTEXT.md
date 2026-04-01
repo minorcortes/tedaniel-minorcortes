@@ -85,7 +85,10 @@ tedaniel.minorcortes.com/
 │           └── seccion_dani/ ← Birth countdown background
 ├── backend/
 │   └── APPS_SCRIPT.js       ← Google Apps Script (RSVP form)
-├── images/                   ← Master PNGs (gitignored, never deployed)
+├── images/                   ← Internal library (masters, hi-res, work files)
+│                                NOT deployed, NOT migrated wholesale.
+│                                Assets promoted selectively to assets/images/web/
+│                                only when user explicitly instructs it.
 ├── docs/
 │   ├── PROJECT_CONTEXT.md    ← this file
 │   ├── AGENT_RULES.md        ← agent workflow rules
