@@ -202,7 +202,19 @@ function showSuccess() {
   const intro = document.querySelector('.rsvp-intro');
   if (intro) intro.style.display = 'none';
   const success = document.getElementById('rsvp-success');
-  if (success) success.classList.remove('hidden');
+  if (success) {
+    success.classList.remove('hidden');
+    // Scroll to success message after DOM renders
+    setTimeout(function() {
+      var headerOffset = 80;
+      var elementPosition = success.getBoundingClientRect().top;
+      var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }, 100);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', initRSVP);
