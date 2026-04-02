@@ -909,7 +909,7 @@ h1, h2, h3 {
 /* --- Montañas de fondo (capa más profunda del cierre) --- */
 .decor-fin-montanas {
   position: absolute;
-  bottom: -5%;
+  bottom: 2%;
   left: 50%;
   transform: translateX(-50%);
   width: 110%;
@@ -921,7 +921,7 @@ h1, h2, h3 {
 
 @media (min-width: 480px) {
   .decor-fin-montanas {
-    bottom: -8%;
+    bottom: 0%;
     width: 105%;
     opacity: 0.5;
   }
@@ -929,7 +929,7 @@ h1, h2, h3 {
 
 @media (min-width: 768px) {
   .decor-fin-montanas {
-    bottom: -10%;
+    bottom: -2%;
     width: 100%;
     opacity: 0.45;
   }
