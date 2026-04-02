@@ -901,6 +901,88 @@ h1, h2, h3 {
   overflow: hidden; 
 }
 
+.section-footer > .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Montañas de fondo (capa más profunda del cierre) --- */
+.decor-fin-montanas {
+  position: absolute;
+  bottom: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  max-width: none;
+  z-index: 0;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+@media (min-width: 480px) {
+  .decor-fin-montanas {
+    bottom: -8%;
+    width: 105%;
+    opacity: 0.5;
+  }
+}
+
+@media (min-width: 768px) {
+  .decor-fin-montanas {
+    bottom: -10%;
+    width: 100%;
+    opacity: 0.45;
+  }
+}
+
+@media (min-width: 1280px) {
+  .decor-fin-montanas {
+    bottom: -12%;
+    width: 100%;
+    opacity: 0.4;
+  }
+}
+
+/* --- Nubes de fondo profundo (detrás de montañas) --- */
+.decor-fin-nube-fondo-1,
+.decor-fin-nube-fondo-2,
+.decor-fin-nube-fondo-3,
+.decor-fin-nube-fondo-4,
+.decor-fin-nube-fondo-5,
+.decor-fin-nube-fondo-6 {
+  z-index: 0 !important;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.decor-fin-nube-fondo-1 { top: 55%; width: 180px; opacity: 0.22; }
+.decor-fin-nube-fondo-2 { top: 62%; width: 200px; opacity: 0.18; }
+.decor-fin-nube-fondo-3 { top: 48%; width: 160px; opacity: 0.2;  }
+.decor-fin-nube-fondo-4 { top: 70%; width: 220px; opacity: 0.15; }
+.decor-fin-nube-fondo-5 { top: 58%; width: 190px; opacity: 0.2;  }
+.decor-fin-nube-fondo-6 { top: 65%; width: 170px; opacity: 0.17; }
+
+@media (max-width: 479px) {
+  .decor-fin-nube-fondo-1,
+  .decor-fin-nube-fondo-2,
+  .decor-fin-nube-fondo-3,
+  .decor-fin-nube-fondo-4,
+  .decor-fin-nube-fondo-5,
+  .decor-fin-nube-fondo-6 {
+    width: 100px !important;
+    opacity: 0.12 !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .decor-fin-nube-fondo-1 { width: 280px; }
+  .decor-fin-nube-fondo-2 { width: 320px; }
+  .decor-fin-nube-fondo-3 { width: 250px; }
+  .decor-fin-nube-fondo-4 { width: 340px; }
+  .decor-fin-nube-fondo-5 { width: 290px; }
+  .decor-fin-nube-fondo-6 { width: 260px; }
+}
+
 /* ==========================================================================
    Sección: Countdown (Transition Bridge)
    Puente Narrativo entre Hero y Nosotros
